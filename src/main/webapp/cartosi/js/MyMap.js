@@ -24,7 +24,7 @@ function toutAfficher($scope) {
 			group : data.group,
 			label : data.label,
 			title : data.title
-			} ]);
+		} ]);
 	});
 
 	angular.forEach($scope.edges, function(data, key) {
@@ -140,8 +140,7 @@ function filterLinkto($scope) {
 	var nodeToSave = [];
 
 	angular.forEach($scope.edges, function(data, key) {
-		if (data.to == $scope.filter.linkto 
-				) {
+		if (data.to == $scope.filter.linkto) {
 			$scope.edges.update([ {
 				id : data.id,
 				hidden : false,
@@ -160,9 +159,9 @@ function filterLinkto($scope) {
 		}
 	});
 
-	//ajout du projet linkto
+	// ajout du projet linkto
 	nodeToSave.push($scope.filter.linkto);
-	
+
 	angular.forEach($scope.nodes, function(data, key) {
 		if ($.inArray(data.id, nodeToSave) == -1) {
 			$scope.nodes.update([ {
@@ -255,9 +254,9 @@ function updateDashbord(scope, resource, filter) {
 								title : value.description,
 								group : value.metier.name,
 								responsable : value.responsable,
-								image : "./cartosi/img/"+value.type+".png",
-								borderWidth :4,
-								shape: 'image'
+								image : "./cartosi/img/" + value.type + ".png",
+								borderWidth : 4,
+								shape : 'image'
 
 							});
 
@@ -277,8 +276,8 @@ function updateDashbord(scope, resource, filter) {
 										myedges.push({
 											from : project.id,
 											to : value,
-											arrows:"to",
-//											title : value.typeLien
+											arrows : "to",
+										// title : value.typeLien
 										});
 									});
 						});
@@ -332,10 +331,11 @@ function updateDashbord(scope, resource, filter) {
 								}
 							},
 							groups : mygroups,
-							interaction: {
-						          navigationButtons: true,
-						          keyboard: true
-						        }
+							interaction : {
+								navigationButtons : true,
+								keyboard : true,
+								zoomView : false
+							}
 						}
 
 						// create a network
@@ -352,18 +352,24 @@ function updateDashbord(scope, resource, filter) {
 								options);
 
 						scope.network.on("click", function(params) {
-//							
-							
+							//							
+
 						});
 						//
-						 scope.network.on("doubleClick", function(params) {
-						window.location = "./cartosi/project/addproject.html?id="+params.nodes[0];
-						 });
-//
-//						scope.network.on("stabilizationProgress", function(
-//								params) {
-//
-//						});
+						scope.network
+								.on(
+										"doubleClick",
+										function(params) {
+											if (params.nodes[0] != null) {
+												window.location = "./cartosi/project/addproject.html?id="
+														+ params.nodes[0];
+											}
+										});
+						//
+						// scope.network.on("stabilizationProgress", function(
+						// params) {
+						//
+						// });
 
 						scope.network.once("stabilizationIterationsDone",
 								function() {
