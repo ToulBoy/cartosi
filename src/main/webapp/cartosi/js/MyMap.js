@@ -276,9 +276,9 @@ function updateDashbord(scope, resource, filter) {
 									function(value, key) {
 										myedges.push({
 											from : project.id,
-											to : value.to,
+											to : value,
 											arrows:"to",
-											title : value.typeLien
+//											title : value.typeLien
 										});
 									});
 						});
@@ -332,6 +332,10 @@ function updateDashbord(scope, resource, filter) {
 								}
 							},
 							groups : mygroups,
+							interaction: {
+						          navigationButtons: true,
+						          keyboard: true
+						        }
 						}
 
 						// create a network
@@ -347,13 +351,14 @@ function updateDashbord(scope, resource, filter) {
 						scope.network = new vis.Network(container, data,
 								options);
 
-//						scope.network.on("click", function(params) {
-//							alert(JSON.stringify(params));
-//						});
+						scope.network.on("click", function(params) {
+//							
+							
+						});
 						//
-						// scope.network.on("doubleClick", function(params) {
-						// alert(params);
-						// });
+						 scope.network.on("doubleClick", function(params) {
+						window.location = "./cartosi/project/addproject.html?id="+params.nodes[0];
+						 });
 //
 //						scope.network.on("stabilizationProgress", function(
 //								params) {

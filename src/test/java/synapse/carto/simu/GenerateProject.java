@@ -56,11 +56,11 @@ public class GenerateProject {
 				rand = rand * (-1);
 			}
 
-			project.addLink(new Link("link http", String.valueOf(rand)));
+			project.addLink(String.valueOf(rand));
 
 			project.metier = GenerateMetier.getMetier(new Random().nextInt() % 3);
 
-			project.type = i==15 || i==35 ? TypeProjet.referentiel : TypeProjet.application;
+			project.type = (i==15 || i==35 )? TypeProjet.referentiel : TypeProjet.application;
 //			project.type =  ? TypeProjet.referentiel : TypeProjet.application;
 			project.responsable = i+"@"+i+".com";
 			repo.store(project, project.id);

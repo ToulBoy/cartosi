@@ -18,16 +18,16 @@ public class Project {
 
 	public List<String> versions;
 
-	public List<Link> links;
+	public List<String> links;
 
 	public Project() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void addLink(Link link) {
+	public void addLink(String link) {
 
 		if (links == null) {
-			links = new ArrayList<Link>();
+			links = new ArrayList<String>();
 		}
 		this.links.add(link);
 
@@ -49,8 +49,8 @@ public class Project {
 		// find link project
 		boolean findLink = false;
 		if (filter.linkto != null) {
-			for (Link link : this.links) {
-				if (!filter.linkto.equals(link.to)
+			for (String link : this.links) {
+				if (!filter.linkto.equals(link)
 						|| filter.linkto.equals(this.id)) {
 					findLink = true;
 				}
