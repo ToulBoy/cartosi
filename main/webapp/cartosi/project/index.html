@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script src="../lib/angular.min.js"></script>
+<script src="../lib/angular-resource.min.js"></script>
+<script src="../lib/ui-bootstrap-tpls-0.13.4.min.js"></script>
+<script src="../js/MyProject.js"></script>
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/carto.css">
+</head>
+<body >
+
+	<div class="container-fluid" ng-app="app">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1 panel-body">
+				<div class="panel panel-primary" ng-controller="myProjectCtr">
+
+					<div class="panel-heading">Définition d'un projet</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<label for="id">Référence</label> <input type="text"
+								class="form-control" id="id" ng-model="project.id" readonly>
+						</div>
+
+						<div class="form-group">
+							<label for="name">Nom du projet</label> <input type="text"
+								class="form-control" id="name" ng-model="project.name">
+						</div>
+
+						<div class="form-group">
+							<label for="version">Version du projet</label> <input type="text"
+								class="form-control" id="name" ng-model="project.version">
+						</div>
+
+						<div class="form-group">
+							<label for="description">Description du projet</label>
+							<textarea rows="3" class="form-control" id="description"
+								ng-model="project.description"> 
+								</textarea>
+						</div>
+
+
+						<div class="form-group">
+							<label for="emailResponsable">Email chef de projet MOE</label> <input
+								type="email" class="form-control" id="emailResponsable"
+								ng-model="project.emailResponsable">
+						</div>
+
+
+						<div class="form-group">
+							<label for="typeProjet">Type de projet</label> <select
+								class="form-control" id="typeProjet" ng-model="project.type">
+								<option>bibliotheque</option>
+								<option>referentiel</option>
+								<option>application</option>
+							</select>
+						</div>
+
+
+						<div class="form-group">
+							<p>
+								<label for="processusLivraisonNormalise">Procédure de
+									livraison normalisée : </label>
+							</p>
+
+							<label class="radio-inline"
+								ng-model="project.processusLivraisonNormalise"> <input
+								type="radio" name="inlineRadioOptions" id="inlineRadio1"
+								value="true"> Oui
+							</label> <label class="radio-inline"
+								ng-model="project.processusLivraisonNormalise"> <input
+								type="radio" name="inlineRadioOptions" id="inlineRadio2"
+								value="false"> Non
+							</label>
+						</div>
+					
+						<p><label for="typeProjet">Lien avec d'autres projets <a
+										href="" ng-click="adlien()">+</a></label> 	</p>
+						
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<select
+										class="form-control " id="typeProjet" ng-model="lien.typeLien">
+										<option>bibliotheque</option>
+										<option>referentiel</option>
+										<option>application</option>
+									</select> <select class="form-control " id="typeProjet"
+										ng-model="lien.idProject">
+										<option>bibliotheque</option>
+										<option>referentiel</option>
+										<option>application</option>
+									</select>
+
+
+								</div>
+
+							</div>
+							<div class="col-md-6">
+								<table class="table">
+									<tr>
+										<th>type de lien</th>
+										<th>Projet</th>
+									</tr>
+									<tr ng-repeat="lien in project.lienProjets">
+										<td>{ {lien.typeLien} }</td>
+										<td>{ {lien.lienProjets} }</td>
+									</tr>
+								</table>
+
+							</div>
+						</div>
+
+						<button type="button" ng-click="update()"
+							class="btn btn-primary btn-lg btn-block">Enregistrer</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

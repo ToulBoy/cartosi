@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script src="./cartosi/lib/angular.min.js"></script>
+<script src="./cartosi/lib/angular-resource.min.js"></script>
+<script src="./cartosi/lib/ui-bootstrap-tpls-0.13.4.min.js"></script>
+<script src="./cartosi/lib/vis.min.js"></script>
+<script src="./cartosi/js/MyMap.js"></script>
+<link rel="stylesheet" href="./cartosi/css/carto.css">
+<link rel="stylesheet" href="./cartosi/css/vis.min.css">
+</head>
+
+<body>
+
+	<div class="container"  ng-app="app">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="panel panel-primary">
+					<div class="panel-heading">Cartographie du SI</div>
+					<div class="panel-body">
+						<div ng-controller="myMainCtrl" id="mynetwork"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
