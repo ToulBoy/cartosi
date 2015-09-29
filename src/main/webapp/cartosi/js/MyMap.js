@@ -275,9 +275,9 @@ function updateDashbord(scope, resource, filter) {
 									function(value, key) {
 										myedges.push({
 											from : project.id,
-											to : value,
+											to : value.to,
 											arrows : "to",
-										// title : value.typeLien
+//											title : value.typeLien
 										});
 									});
 						});

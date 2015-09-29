@@ -94,7 +94,7 @@
 											<label for="description">Description du projet</label>
 											<textarea rows="3" class="form-control" id="description"
 												ng-model="project.description"> 
-								</textarea>
+										</textarea>
 										</div>
 
 
@@ -102,6 +102,15 @@
 											<label for="emailResponsable">Email chef de projet
 												MOE</label> <input type="email" class="form-control"
 												id="emailResponsable" ng-model="project.responsable">
+										</div>
+										
+										<div class="form-group">
+											<label for="emailResponsable">Domaine fonctionnel</label> 
+												<select class="form-control"
+														ng-model="project.name">
+														<option ng-repeat="option in metiers"
+															value="{{option.name}}">{{option.name}}</option>
+													</select>
 										</div>
 
 
@@ -115,53 +124,84 @@
 										</div>
 
 										<div class="form-group">
-											<label for="typeProjet">Lié avec le(s) projet(s)</label>
-											<!-- 												<select class="selectpicker" multiple -->
-											<!-- 													data-selected-text-format="count"> -->
-											<!-- 													<option ng-repeat="project in projects" -->
-											<!-- 														value="{{project.id}}">{{option.name}}</option> -->
-											<!-- 												</select> -->
-											<select ng-change="updateMap()" multiple class="form-control"
-												ng-model="project.links">
-												<option selected="selected" value="">------</option>
-												<option ng-repeat="option in projects" value="{{option.id}}">{{option.name}}</option>
-											</select>
+											<label for="typeProjet">Lié avec le(s) projet(s)</label> 
+											<div class="col-md-12">
+												<div class="col-md-2">
+													<label for="typeProjet">Projet</label>
+													 <select
+														ng-change="selectLinkProject(selectProject)" class="form-control"
+														ng-model="selectProject">
+														<option selected="selected" value="">------</option>
+														<option ng-repeat="option in projects"
+															value="{{option}}">{{option.name}}</option>
+													</select>
+
+												</div>
+												<div class="col-md-2">
+													<label for="typeProjet">Version</label> <select class="form-control"
+														ng-model="selectversion">
+														<option selected="selected" value="">------</option>
+														<option ng-repeat="option in selectversions"
+															value="{{option}}">{{option}}</option>
+													</select>
+
+												</div>
+												<div class="col-md-2">
+												<label for="typeProjet"> <button ng-click ="add()">Ajouter</button> </label> 
+													<div class="btn-group-vertical"></div>
+												</div>
+
+												<div class="col-md-6">
+													<table class="table">
+														<tr>
+															<th>Projet</th>
+															<th>version</th>
+															<th>Supprimer</th>
+														</tr>
+														<tr ng-repeat="lien in project.links">
+															<td>{{ lien.to }}</td>
+															<td>{{ lien.version }}</td>
+															<td><a href="" ng-click="del(lien)" class="fa fa-remove"></a></td>
+														</tr>
+
+													</table>
+
+												</div>
+											</div>
+
 
 										</div>
 									</div>
+									<!-- /.box-body -->
 
-
-								</div>
+									<div class="box-footer">
+										<button type="submit" ng-click="update()"
+											class="btn btn-primary">Enregistrer</button>
+										<!-- 										<button type="button" ng-click="update()" -->
+										<!-- 											class="btn btn-primary btn-lg btn-block">Enregistrer</button> -->
+									</div>
+							</form>
 						</div>
-						<!-- /.box-body -->
+						<!-- /.box -->
 
-						<div class="box-footer">
-							<button type="submit" ng-click="update()" class="btn btn-primary">Enregistrer</button>
-							<!-- 										<button type="button" ng-click="update()" -->
-							<!-- 											class="btn btn-primary btn-lg btn-block">Enregistrer</button> -->
-						</div>
-						</form>
 					</div>
-					<!-- /.box -->
-
 				</div>
+				<!-- /.row -->
+			</section>
+			<!-- /.content -->
 		</div>
-		<!-- /.row -->
-		</section>
-		<!-- /.content -->
-	</div>
-	<!-- /.content-wrapper -->
-	<footer class="main-footer">
-		<div class="pull-right hidden-xs">
-			<b>Version</b> 2.3.0
-		</div>
-		<strong>Copyright &copy; 2014-2015 <a
-			href="http://almsaeedstudio.com">Almsaeed Studio</a>.
-		</strong> All rights reserved.
-	</footer>
-	<!-- Add the sidebar's background. This div must be placed
+		<!-- /.content-wrapper -->
+		<footer class="main-footer">
+			<div class="pull-right hidden-xs">
+				<b>Version</b> 2.3.0
+			</div>
+			<strong>Copyright &copy; 2014-2015 <a
+				href="http://almsaeedstudio.com">Almsaeed Studio</a>.
+			</strong> All rights reserved.
+		</footer>
+		<!-- Add the sidebar's background. This div must be placed
            immediately after the control sidebar -->
-	<div class="control-sidebar-bg"></div>
+		<div class="control-sidebar-bg"></div>
 	</div>
 	<!-- ./wrapper -->
 

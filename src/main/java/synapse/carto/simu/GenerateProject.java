@@ -1,5 +1,7 @@
 package synapse.carto.simu;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import synapse.carto.data.Link;
@@ -56,13 +58,20 @@ public class GenerateProject {
 				rand = rand * (-1);
 			}
 
-			project.addLink(String.valueOf(rand));
+			project.addLink(new Link("1",String.valueOf(rand)));
 
 			project.metier = GenerateMetier.getMetier(new Random().nextInt() % 3);
 
 			project.type = (i==15 || i==35 )? TypeProjet.referentiel : TypeProjet.application;
 //			project.type =  ? TypeProjet.referentiel : TypeProjet.application;
 			project.responsable = i+"@"+i+".com";
+			
+			List<String>versions = new ArrayList<String>();
+			versions.add(i+"."+1);
+			versions.add(i+"."+2);
+			versions.add(i+"."+3);
+			versions.add(i+"."+4);
+			project.versions = versions;
 			repo.store(project, project.id);
 
 		}

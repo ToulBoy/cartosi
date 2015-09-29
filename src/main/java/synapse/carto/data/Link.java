@@ -2,13 +2,13 @@ package synapse.carto.data;
 
 public class Link {
 
-	public String typeLien;
+	public String version;
 
 	public String to;
 
-	public Link(String typeLien, String idProject) {
+	public Link(String version, String idProject) {
 		super();
-		this.typeLien = typeLien;
+		this.version = version;
 		this.to = idProject;
 	}
 
