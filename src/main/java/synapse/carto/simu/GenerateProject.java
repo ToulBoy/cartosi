@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import synapse.carto.data.Link;
 import synapse.carto.data.Metier;
 import synapse.carto.data.Project;
 import synapse.carto.data.TypeProjet;
@@ -58,7 +57,7 @@ public class GenerateProject {
 				rand = rand * (-1);
 			}
 
-			project.addLink(new Link("1",String.valueOf(rand)));
+			project.addLink(String.valueOf(rand));
 
 			project.metier = GenerateMetier.getMetier(new Random().nextInt() % 3);
 
@@ -71,7 +70,6 @@ public class GenerateProject {
 			versions.add(i+"."+2);
 			versions.add(i+"."+3);
 			versions.add(i+"."+4);
-			project.versions = versions;
 			repo.store(project, project.id);
 
 		}

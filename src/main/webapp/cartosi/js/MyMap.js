@@ -275,7 +275,7 @@ function updateDashbord(scope, resource, filter) {
 									function(value, key) {
 										myedges.push({
 											from : project.id,
-											to : value.to,
+											to : value,
 											arrows : "to",
 //											title : value.typeLien
 										});
