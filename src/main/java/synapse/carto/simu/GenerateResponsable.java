@@ -8,6 +8,8 @@ public class GenerateResponsable {
 	public static Responsable getResponsable(int i) {
 		
 		Responsable responsable = new Responsable();
+		responsable.lastname = String.valueOf(i);
+		responsable.firstname = String.valueOf(i);
 		responsable.email = String.valueOf(i)+"@"+String.valueOf(i)+".com";
 		
 		return 	responsable;	

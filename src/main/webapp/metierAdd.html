@@ -64,7 +64,7 @@
 						<!-- general form elements -->
 						<div class="box box-primary">
 							<div class="box-header with-border">
-								<h3 class="box-title">Définition d'un projet</h3>
+								<h3 class="box-title">Définition des métiers</h3>
 							</div>
 							<!-- /.box-header -->
 							<!-- form start -->
@@ -73,77 +73,24 @@
 
 									<div class="panel-body">
 										<div class="form-group">
-											<label for="id">Référence</label> <input type="text"
-												class="form-control" id="id" ng-model="project.id" readonly>
+											<label for="id">Name</label> <input type="text"
+												class="form-control" id="id" ng-model="metier.name" >
 										</div>
 
 										<div class="form-group">
-											<label for="name">Nom du projet</label> <input type="text"
+											<label for="name">Colore</label> <input type="text"
 												class="form-control" id="name" ng-model="project.name">
 										</div>
-
-										<!-- 										<div class="form-group"> -->
-										<!-- 											<label for="version">Version du projet</label> <select -->
-										<!-- 												class="form-control select2" multiple="multiple" -->
-										<!-- 												ng-model="selectversion"> -->
-										<!-- 												<option selected="selected" value="">------</option> -->
-										<!-- 												<option ng-repeat="option in selectversions" -->
-										<!-- 													value="{{option}}">{{option}}</option> -->
-										<!-- 											</select> -->
-										<!-- 										</div> -->
-
-										<div class="form-group">
-											<label for="description">Description du projet</label>
-											<textarea rows="3" class="form-control" id="description"
-												ng-model="project.description"> 
-										</textarea>
-										</div>
-
-
-										<div class="form-group">
-											<label for="emailResponsable">Email chef de projet
-												MOE</label> <input type="email" class="form-control"
-												id="emailResponsable" ng-model="project.responsable">
-										</div>
-
-										<div class="form-group">
-											<label for="emailResponsable">Domaine fonctionnel</label> <select
-												class="form-control" ng-model="project.metier">
-												<option ng-repeat="option in metiers"
-													value="{{option.name}}">{{option.name}}</option>
-											</select>
-										</div>
-
-
-										<div class="form-group">
-											<label for="typeProjet">Type de projet</label> <select
-												class="form-control" id="typeProjet" ng-model="project.type">
-												<option>bibliotheque</option>
-												<option>referentiel</option>
-												<option>application</option>
-											</select>
-										</div>
-
-										<div class="form-group">
-											<label for="typeProjet">Lié avec le(s) projet(s)</label>
-											 <tt> selectedValues = {{project.links}}</tt>
-											<select multiple class="form-control"  ng-model="project.links">
-												<option ng-repeat="project in projects"
-													value="{{project.id}}">{{project.name}}</option>
-											</select>
-
-
-
-										</div>
 									</div>
-									<!-- /.box-body -->
+								</div>
+								<!-- /.box-body -->
 
-									<div class="box-footer">
-										<button type="submit" ng-click="update()"
-											class="btn btn-primary">Enregistrer</button>
-										<!-- 										<button type="button" ng-click="update()" -->
-										<!-- 											class="btn btn-primary btn-lg btn-block">Enregistrer</button> -->
-									</div>
+								<div class="box-footer">
+									<button type="submit" ng-click="update()"
+										class="btn btn-primary">Enregistrer</button>
+									<!-- 										<button type="button" ng-click="update()" -->
+									<!-- 											class="btn btn-primary btn-lg btn-block">Enregistrer</button> -->
+								</div>
 							</form>
 						</div>
 						<!-- /.box -->
