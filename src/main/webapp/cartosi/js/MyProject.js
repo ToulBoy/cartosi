@@ -12,10 +12,19 @@ angular.module('app', [ "ngResource", 'ngSanitize', 'ui.select' ]).controller(
 			var metierQuery = $resource('./api/metier/:id', {
 				id : '@id'
 			});
+			
+			
+			var responsableQuery = $resource('./api/responsable/:id', {
+				id : '@id'
+			});
+			
 
 			$scope.projects = projectQuery.query(function() {
 			});
 
+			$scope.responsables = responsableQuery.query(function() {
+			});
+			
 			$scope.metiers = metierQuery.query(function() {
 			});
 
