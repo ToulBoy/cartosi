@@ -14,7 +14,7 @@ public class Project {
 	public boolean processusLivraisonNormalise;
 	public TypeProjet type;
 	public String responsable;
-	public Metier metier;
+	public String metier;
 
 	public List<String> links;
 
@@ -33,7 +33,7 @@ public class Project {
 
 	public boolean isFilter(Filter filter) {
 
-		if (filter.metier != null && !filter.metier.equals(this.metier.name)) {
+		if (filter.metier != null && !filter.metier.equals(this.metier)) {
 			return false;
 		}
 		

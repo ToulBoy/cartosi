@@ -3,14 +3,13 @@ angular.module('app', [ "ngResource", "ui.bootstrap" ]).controller(
 			$scope.filter = {};
 			$scope.updateMap = function() {
 
-				console.log(JSON.stringify($scope.filter));
 				toutAfficher($scope);
 				filterMetier($scope);
 				filterResponsable($scope);
 				filterLinkto($scope);
 
 			};
-
+			
 			updateDashbord($scope, $resource, $scope.filter);
 
 		});
@@ -54,13 +53,7 @@ function filterMetier($scope) {
 			} ]);
 			idHidden.push(data.id);
 		} else {
-			$scope.nodes.update([ {
-				id : data.id,
-				hidden : false,
-				group : data.group,
-				label : data.label,
-				title : data.title
-			} ]);
+			$scope.network.focus(data.id);
 		}
 
 	});
@@ -102,13 +95,8 @@ function filterResponsable($scope) {
 			} ]);
 			idHidden.push(data.id);
 		} else {
-			$scope.nodes.update([ {
-				id : data.id,
-				hidden : false,
-				group : data.group,
-				label : data.label,
-				title : data.title
-			} ]);
+
+			$scope.network.focus(data.id);
 		}
 
 	});
@@ -141,13 +129,11 @@ function filterLinkto($scope) {
 
 	angular.forEach($scope.edges, function(data, key) {
 		if (data.to == $scope.filter.linkto) {
-			$scope.edges.update([ {
-				id : data.id,
-				hidden : false,
-				label : data.label,
-				title : data.title
-			} ]);
+
 			nodeToSave.push(data.from);
+			
+			$scope.network.focus(data.id);
+
 
 		} else {
 			$scope.edges.update([ {
@@ -172,13 +158,7 @@ function filterLinkto($scope) {
 				title : data.title
 			} ]);
 		} else {
-			$scope.nodes.update([ {
-				id : data.id,
-				hidden : false,
-				group : data.group,
-				label : data.label,
-				title : data.title
-			} ]);
+			$scope.network.focus(data.id);
 		}
 
 	});
@@ -361,7 +341,7 @@ function updateDashbord(scope, resource, filter) {
 										"doubleClick",
 										function(params) {
 											if (params.nodes[0] != null) {
-												window.location = "./cartosi/project/addproject.html?id="
+												window.location = "./projectAdd.html?id="
 														+ params.nodes[0];
 											}
 										});

@@ -32,7 +32,7 @@ public class ProjectResponse {
 			}
 			
 			if(!hashMapMetier.containsKey(key)){
-				hashMapMetier.put(key.metier.name, key.metier.name);
+				hashMapMetier.put(key.metier, key.metier);
 			}
 			
 			

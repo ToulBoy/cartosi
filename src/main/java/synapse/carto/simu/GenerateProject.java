@@ -59,7 +59,7 @@ public class GenerateProject {
 
 			project.addLink(String.valueOf(rand));
 
-			project.metier = GenerateMetier.getMetier(new Random().nextInt() % 3);
+			project.metier = GenerateMetier.getMetier(new Random().nextInt() % 3).name;
 
 			project.type = (i==15 || i==35 )? TypeProjet.referentiel : TypeProjet.application;
 //			project.type =  ? TypeProjet.referentiel : TypeProjet.application;
