@@ -4,8 +4,8 @@
  	"PROJET_ID" : "Référence",
  	"PROJET_NAME" : "Nom du projet",
  	"PROJECT_TYPE" : "Type de projet",
- 	"LASTNAME" : "NOM",
- 	"FIRSTNAME" : "PRENOM",
+ 	"LASTNAME" : "Nom",
+ 	"FIRSTNAME" : "Prénom",
  	"DESCRIPTION" : "Description du projet",
     "TEAM_LEADER" : "Responsable",
     "TEAM_LEADERS" : "Responsables",
@@ -15,7 +15,9 @@
     "FUNCTIONALS_DOMAINS" : "Domaines fonctionnels",
     "LINK_WITH_THE_PROJECT" : "Lié avec le(s) projet(s)",
     "COLOR" : "Couleur",
+    "NAME" : "NOM",
     "COUNT_PROJECTS" : "NB PROJETS",
-    "COUNT_CONNEXION" : "NB INTERCONNEXIONS"
+    "COUNT_CONNEXION" : "NB INTERCONNEXIONS",
+    "VALIDATE" : "Enregistrer"
    
 }
