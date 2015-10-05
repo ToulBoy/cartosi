@@ -23,7 +23,6 @@ app.service("myTranslators", [
 
 app.controller(
 		'myMainCtrl', 
-//		function($scope, $resource , $cookies,myTranslators) {
 		[ '$scope', '$resource', 'myTranslators',
 			function($scope, $resource, myTranslators) {	
 			
