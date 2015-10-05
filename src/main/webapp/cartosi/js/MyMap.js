@@ -1,5 +1,6 @@
-angular.module('app', [ "ngResource", "ui.bootstrap" ]).controller(
-		'myMainCtrl', function($scope, $resource) {
+
+angular.module('app', [ "ngResource", "ui.bootstrap","ngCookies"]).controller(
+		'myMainCtrl', function($scope, $resource , $cookies) {
 			$scope.filter = {};
 			$scope.updateMap = function() {
 
@@ -9,6 +10,8 @@ angular.module('app', [ "ngResource", "ui.bootstrap" ]).controller(
 				filterLinkto($scope);
 
 			};
+			
+			alert($cookies.lang);
 			
 			updateDashbord($scope, $resource, $scope.filter);
 
