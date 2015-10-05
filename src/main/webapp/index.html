@@ -67,7 +67,7 @@
 							<span class="info-box-icon bg-aqua"><i
 								class="fa fa-tachometer"></i></span>
 							<div class="info-box-content">
-								<span class="info-box-text">Nb Projets</span> <span
+								<span class="info-box-text">{{translate.COUNT_PROJECTS}}</span> <span
 									class="info-box-number">{{ si.nbProjects }}</span>
 							</div>
 							<!-- /.info-box-content -->
@@ -80,7 +80,7 @@
 							<span class="info-box-icon bg-green"><i
 								class="ion ion-ios-people-outline"></i></span>
 							<div class="info-box-content">
-								<span class="info-box-text">CHEF PROJET</span> <span
+								<span class="info-box-text">{{translate.TEAM_LEADERS}}</span> <span
 									class="info-box-number">{{ si.nbResponsable }}</span>
 							</div>
 							<!-- /.info-box-content -->
@@ -97,7 +97,7 @@
 							<span class="info-box-icon bg-red"><i
 								class="fa  fa-balance-scale"></i></span>
 							<div class="info-box-content">
-								<span class="info-box-text">Nb interconnexions</span> <span
+								<span class="info-box-text">{{translate.COUNT_CONNEXION}}</span> <span
 									class="info-box-number">{{ si.nbLinks }}</span>
 							</div>
 							<!-- /.info-box-content -->
@@ -110,7 +110,7 @@
 							<span class="info-box-icon bg-yellow"><i
 								class="fa fa-map-signs"></i></span>
 							<div class="info-box-content">
-								<span class="info-box-text">Domaines fonctionnels</span> <span
+								<span class="info-box-text">{{translate.FUNCTIONALS_DOMAINS}}</span> <span
 									class="info-box-number">{{ si.nbMetiers }}</span>
 							</div>
 							<!-- /.info-box-content -->
@@ -129,7 +129,7 @@
 								<div class="row">
 									<div class="col-sm-4 col-xs-6">
 										<div class="form-group">
-											<label>Metier</label> <select ng-change="updateMap()"
+											<label>{{translate.FUNCTIONAL_DOMAIN}}</label> <select ng-change="updateMap()"
 												ng-model="filter.metier" class="form-control select2"
 												style="width: 100%;">
 												<option selected="selected" value="">------</option>
@@ -142,7 +142,7 @@
 									<!-- /.col -->
 									<div class="col-sm-4 col-xs-6">
 										<div class="form-group">
-											<label>Responsable</label> <select ng-change="updateMap()"
+											<label>{{translate.TEAM_LEADER}}</label> <select ng-change="updateMap()"
 												class="form-control " ng-model="filter.responsable"
 												style="width: 100%;">
 												<option selected="selected" value="">------</option>
@@ -156,7 +156,7 @@
 									<!-- /.col -->
 									<div class="col-sm-4 col-xs-6">
 										<div class="form-group">
-											<label>Projets lié à :</label> <select
+											<label>{{translate.LINK_WITH_THE_PROJECT}}</label> <select
 												ng-change="updateMap()" class="form-control "
 												ng-model="filter.linkto" style="width: 100%;">
 												<option selected="selected" value="">------</option>

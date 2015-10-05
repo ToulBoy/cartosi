@@ -1,7 +1,36 @@
+var app = angular.module('app', [ "ngResource", "ui.bootstrap","ngCookies"]);
 
-angular.module('app', [ "ngResource", "ui.bootstrap","ngCookies"]).controller(
-		'myMainCtrl', function($scope, $resource , $cookies) {
+
+
+app.service("myTranslators", [
+                      		"$resource",
+                      		"$cookies",
+                      		"$window",
+                      		function($resource,$cookies,$window) {
+                      			
+                      			this.getTranslation = function($scope) {
+                      				
+                      				var language = $window.navigator.language;
+                      				var languageFilePath = './cartosi/translation/translation_'
+                      						+ language + '.json';
+                      				return $resource(languageFilePath).get(function(data) {
+                      					$scope.translate = data;
+                      				});
+                      			};
+                      		} ]);
+
+
+
+app.controller(
+		'myMainCtrl', 
+//		function($scope, $resource , $cookies,myTranslators) {
+		[ '$scope', '$resource', 'myTranslators',
+			function($scope, $resource, myTranslators) {	
+			
+			
 			$scope.filter = {};
+			myTranslators.getTranslation($scope);
+
 			$scope.updateMap = function() {
 
 				toutAfficher($scope);
@@ -11,11 +40,9 @@ angular.module('app', [ "ngResource", "ui.bootstrap","ngCookies"]).controller(
 
 			};
 			
-			alert($cookies.lang);
-			
 			updateDashbord($scope, $resource, $scope.filter);
 
-		});
+		}]);
 
 function toutAfficher($scope) {
 

@@ -1,36 +1,19 @@
-// déclaration du module 'myservices' qui contient la liste de mes services
-angular.module('myServices', []);
+var app = angular.module('app', [ "ngResource",'ngCookies' ]);
 
 
-//enregistrement des services dans mon application main
-angular.module('app', [ 'myServices' ]);
-
-
-//ajout des services dans le module myservices
-
-
-
-angular.module('myServices').service("ngResource");
-
-angular.module('myServices').app.service('translationService', function($resource) {  
-    this.getTranslation = function($scope, language) {
-        var languageFilePath = './cartosi/tanslation/translation_' + language + '.json';
-        $resource(languageFilePath).get(function (data) {
-            $scope.translation = data;
-        });
-    };
-});
-
-
-////Nous enregistrons le service projectService 
-//
-//angular.module('myServices').service('myProjectServices', []).factory("$resource", function($resource) {
-//	return $resource('./api/projet/:id', {
-//		id : '@_id'
-//	}, {
-//		update : {
-//			method : 'PUT'
-//		}
-//	});
-//});
-
+app.service("myTranslators", [
+		"$resource",
+		"$cookies",
+		"$window",
+		function($resource,$cookies,$window) {
+			
+			this.getTranslation = function($scope) {
+				
+				var language = $window.navigator.language;
+				var languageFilePath = './cartosi/translation/translation_'
+						+ language + '.json';
+				return $resource(languageFilePath).get(function(data) {
+					$scope.translate = data;
+				});
+			};
+		} ]);

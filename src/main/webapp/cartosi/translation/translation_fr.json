@@ -1,12 +1,21 @@
 {  
-
- 	"PROJET" : "PROJET",
+ 	"PROJECT" : "Projet",
+ 	"PROJECTS" : "Projets",
+ 	"PROJET_ID" : "Référence",
+ 	"PROJET_NAME" : "Nom du projet",
+ 	"PROJECT_TYPE" : "Type de projet",
  	"LASTNAME" : "NOM",
  	"FIRSTNAME" : "PRENOM",
- 	"DESCRIPTION" : "NOM",
-    "RESPONSABLE" : " Hello World!",
-    "METIER" : "Hello",
-    "RESPONSABLE" : " Hello World!",
-    "COLOR" : "Color"
+ 	"DESCRIPTION" : "Description du projet",
+    "TEAM_LEADER" : "Responsable",
+    "TEAM_LEADERS" : "Responsables",
+    "EMAIL_TEAM_LEADER" : "Email responsable",
+    "EMAIL" : "Email",
+    "FUNCTIONAL_DOMAIN" : "Domaine fonctionnel",
+    "FUNCTIONALS_DOMAINS" : "Domaines fonctionnels",
+    "LINK_WITH_THE_PROJECT" : "Lié avec le(s) projet(s)",
+    "COLOR" : "Couleur",
+    "COUNT_PROJECTS" : "NB PROJETS",
+    "COUNT_CONNEXION" : "NB INTERCONNEXIONS"
    
 }

@@ -1,5 +1,9 @@
-angular.module('app', [ "ngResource", 'ngSanitize', 'ui.select' ]).controller(
-		'myProjectCtr', function($scope, $resource) {
+var app = angular.module('app', [ "ngResource",'ngCookies' ]);
+
+app.controller('myProjectCtr', [ '$scope', '$resource', 'myTranslators',
+		function($scope, $resource, myTranslators) {
+
+			myTranslators.getTranslation($scope);
 
 			var projectQuery = $resource('./api/project/:id', {
 				id : '@id'
@@ -12,19 +16,17 @@ angular.module('app', [ "ngResource", 'ngSanitize', 'ui.select' ]).controller(
 			var metierQuery = $resource('./api/metier/:id', {
 				id : '@id'
 			});
-			
-			
+
 			var responsableQuery = $resource('./api/responsable/:id', {
 				id : '@id'
 			});
-			
 
 			$scope.projects = projectQuery.query(function() {
 			});
 
 			$scope.responsables = responsableQuery.query(function() {
 			});
-			
+
 			$scope.metiers = metierQuery.query(function() {
 			});
 
@@ -39,4 +41,21 @@ angular.module('app', [ "ngResource", 'ngSanitize', 'ui.select' ]).controller(
 				projectQuery.put($scope.project);
 			}
 
-		});
+		} ]);
+
+app.service("myTranslators", [
+		"$resource",
+		"$cookies",
+		"$window",
+		function($resource,$cookies,$window) {
+			
+			this.getTranslation = function($scope) {
+				
+				var language = $window.navigator.language;
+				var languageFilePath = './cartosi/translation/translation_'
+						+ language + '.json';
+				return $resource(languageFilePath).get(function(data) {
+					$scope.translate = data;
+				});
+			};
+		} ]);

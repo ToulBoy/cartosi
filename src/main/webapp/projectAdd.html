@@ -73,12 +73,12 @@
 
 									<div class="panel-body">
 										<div class="form-group">
-											<label for="id">Référence</label> <input type="text"
+											<label for="id">{{translate.PROJET_ID}}</label> <input type="text"
 												class="form-control" id="id" ng-model="project.id" readonly>
 										</div>
 
 										<div class="form-group">
-											<label for="name">Nom du projet</label> <input type="text"
+											<label for="name">{{translate.PROJET_NAME}} </label> <input type="text"
 												class="form-control" id="name" ng-model="project.name">
 										</div>
 
@@ -93,7 +93,7 @@
 										<!-- 										</div> -->
 
 										<div class="form-group">
-											<label for="description">Description du projet</label>
+											<label for="description">{{translate.DESCRIPTION}}</label>
 											<textarea rows="3" class="form-control" id="description"
 												ng-model="project.description"> 
 										</textarea>
@@ -101,13 +101,12 @@
 
 
 										<div class="form-group">
-											<label for="emailResponsable">Email chef de projet
-												MOE</label> <input type="email" class="form-control"
+											<label for="emailResponsable">{{translate.EMAIL_TEAM_LEADER}}</label> <input type="email" class="form-control"
 												id="emailResponsable" ng-model="project.responsable">
 										</div>
 
 										<div class="form-group">
-											<label for="emailResponsable">Domaine fonctionnel</label> <select
+											<label for="emailResponsable">{{translate.FUNCTIONAL_DOMAIN}}</label> <select
 												class="form-control" ng-model="project.metier">
 												<option ng-repeat="option in metiers"
 													value="{{option.name}}">{{option.name}}</option>
@@ -116,7 +115,7 @@
 
 
 										<div class="form-group">
-											<label for="typeProjet">Type de projet</label> <select
+											<label for="typeProjet">{{translate.PROJECT_TYPE}}</label> <select
 												class="form-control" id="typeProjet" ng-model="project.type">
 												<option>bibliotheque</option>
 												<option>referentiel</option>
@@ -126,8 +125,9 @@
 
 										<div class="form-group">
 											<label for="typeProjet">Lié avec le(s) projet(s)</label>
-											 <tt> selectedValues = {{project.links}}</tt>
-											<select multiple class="form-control"  ng-model="project.links">
+											<tt>  {{project.links}}</tt>
+											<select multiple class="form-control"
+												ng-model="project.links">
 												<option ng-repeat="project in projects"
 													value="{{project.id}}">{{project.name}}</option>
 											</select>
@@ -191,10 +191,10 @@
 	<script src="./cartosi/lib/angular.min.js"></script>
 	<script src="./cartosi/lib/angular-resource.min.js"></script>
 	<script src="./cartosi/lib/angular-sanitize.js"></script>
+	<script src="./cartosi/lib/angular-cookies.min.js"></script>
+
+	<script src="./cartosi/js/MyServices.js"></script>
 	<script src="./cartosi/js/MyProject.js"></script>
-	<!-- Select2 -->
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.13.1/select.min.js"></script>
 
 	<script>
 		$(function() {
