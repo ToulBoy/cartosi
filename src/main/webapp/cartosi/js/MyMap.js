@@ -254,14 +254,14 @@ function updateDashbord(scope, resource, filter) {
 
 						scope.si = si;
 						var mynodes = [];
-						var siProjects = si.projects;
+						var siProjects = scope.projects;
 
 						angular.forEach(siProjects, function(value, key) {
 							mynodes.push({
 								id : value.id,
-								label : value.name,
+								label : value.id,
 								title : value.description,
-								group : value.metier.name,
+								group : value.metier,
 								responsable : value.responsable,
 								image : "./cartosi/img/" + value.type + ".png",
 								borderWidth : 4,
@@ -269,7 +269,7 @@ function updateDashbord(scope, resource, filter) {
 
 							});
 
-							mygroups[value.metier.name] = {
+							mygroups[value.metier.id] = {
 								color : {
 									background : value.metier.color
 								}

@@ -56,7 +56,7 @@ public class GenerateProject {
 			}
 
 			
-			for (int j = 0; j < 10; j++) {
+			for (int j = 0; j < 3; j++) {
 				if (new Random().nextBoolean()) {
 					
 					int pos = new Random().nextInt() % max;

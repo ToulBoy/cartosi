@@ -134,7 +134,7 @@
 												style="width: 100%;">
 												<option selected="selected" value="">------</option>
 												<option ng-repeat="option in metiers"
-													value="{{option.name}}">{{option.name}}</option>
+													value="{{option.id}}">{{option.id}}</option>
 											</select>
 										</div>
 										<!-- /.form-group -->
@@ -160,7 +160,7 @@
 												ng-change="updateMap()" class="form-control "
 												ng-model="filter.linkto" style="width: 100%;">
 												<option selected="selected" value="">------</option>
-												<option ng-repeat="option in projects" value="{{option.id}}">{{option.name}}</option>
+												<option ng-repeat="option in projects" value="{{option.id}}">{{option.id}}</option>
 											</select>
 										</div>
 										<!-- /.form-group -->

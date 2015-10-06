@@ -14,6 +14,7 @@ public class Si {
 	int nbResponsable = 0;
 	int nbLinks = 0;
 	int nbMetiers = 0;
+	
 
 	MetierRepo repo = new MetierRepo();
 	ResponsableRepo responsableRepo = new ResponsableRepo();
