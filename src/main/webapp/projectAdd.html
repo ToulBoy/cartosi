@@ -64,7 +64,7 @@
 						<!-- general form elements -->
 						<div class="box box-primary">
 							<div class="box-header with-border">
-								<h3 class="box-title">{{translate.PROJECT}</h3>
+								<h3 class="box-title">{{translate.PROJECTS}}</h3>
 							</div>
 							<!-- /.box-header -->
 							<!-- form start -->
@@ -73,24 +73,16 @@
 
 									<div class="panel-body">
 										<div class="form-group">
-											<label for="id">{{translate.PROJET_ID}}</label> <input type="text"
-												class="form-control" id="id" ng-model="project.id" readonly>
+											<label for="id">{{translate.PROJET_ID}}</label> <input
+												type="text" class="form-control" id="id"
+												ng-model="project.id" readonly>
 										</div>
 
 										<div class="form-group">
-											<label for="name">{{translate.PROJET_NAME}} </label> <input type="text"
-												class="form-control" id="name" ng-model="project.name">
+											<label for="name">{{translate.PROJET_NAME}} </label> <input
+												type="text" class="form-control" id="name"
+												ng-model="project.name">
 										</div>
-
-										<!-- 										<div class="form-group"> -->
-										<!-- 											<label for="version">Version du projet</label> <select -->
-										<!-- 												class="form-control select2" multiple="multiple" -->
-										<!-- 												ng-model="selectversion"> -->
-										<!-- 												<option selected="selected" value="">------</option> -->
-										<!-- 												<option ng-repeat="option in selectversions" -->
-										<!-- 													value="{{option}}">{{option}}</option> -->
-										<!-- 											</select> -->
-										<!-- 										</div> -->
 
 										<div class="form-group">
 											<label for="description">{{translate.DESCRIPTION}}</label>
@@ -101,13 +93,14 @@
 
 
 										<div class="form-group">
-											<label for="emailResponsable">{{translate.EMAIL_TEAM_LEADER}}</label> <input type="email" class="form-control"
+											<label for="emailResponsable">{{translate.EMAIL_TEAM_LEADER}}</label>
+											<input type="email" class="form-control"
 												id="emailResponsable" ng-model="project.responsable">
 										</div>
 
 										<div class="form-group">
-											<label for="emailResponsable">{{translate.FUNCTIONAL_DOMAIN}}</label> <select
-												class="form-control" ng-model="project.metier">
+											<label for="emailResponsable">{{translate.FUNCTIONAL_DOMAIN}}</label>
+											<select class="form-control" ng-model="project.metier">
 												<option ng-repeat="option in metiers"
 													value="{{option.name}}">{{option.name}}</option>
 											</select>
@@ -115,7 +108,7 @@
 
 
 										<div class="form-group">
-											<label for="typeProjet">{{translate.PROJECT_TYPE}}</label> <select
+											<label>{{translate.PROJECT_TYPE}}</label> <select
 												class="form-control" id="typeProjet" ng-model="project.type">
 												<option>bibliotheque</option>
 												<option>referentiel</option>
@@ -124,14 +117,45 @@
 										</div>
 
 										<div class="form-group">
-											<label for="typeProjet">Lié avec le(s) projet(s)</label>
-											<tt>  {{project.links}}</tt>
-											<select multiple class="form-control"
-												ng-model="project.links">
-												<option ng-repeat="project in projects"
-													value="{{project.id}}">{{project.name}}</option>
-											</select>
+											<div class="col-md-2">
+												<label>{{translate.LINK_WITH_THE_PROJECT}}</label> <select
+													class="form-control" ng-model="linkSelect.projectId">
+													<option ng-repeat="project in projects"
+														value="{{project.id}}">{{project.id}}</option>
+												</select>
+											</div>
+											<div class="col-md-3">
+												<label>{{translate.LINK_WITH_THE_PROJECT_COMMENT}}</label> <input
+													type="text" class="form-control" id="emailResponsable"
+													ng-model="linkSelect.comment">
+											</div>
+											<div class="col-md-2">
+												<!-- 												<label>{{translate.LINK_WITH_THE_PROJECT_COMMENT}}</label> -->
+												<a href="" ng-click="adlien()">Ajouter</a>
+											</div>
 
+											<div class="col-md-5">
+												<table class="table table-bordered table-hover">
+													<thead>
+														<tr>
+															<th>{{translate.PROJET_ID}}</th>
+															<th>{{translate.LINK_WITH_THE_PROJECT_COMMENT}}</th>
+															<td><span class="glyphicon glyphicon-search"></span>
+															<td><span class="glyphicon glyphicon-search"></span>
+															</td>
+														</tr>
+													</thead>
+													<tbody>
+														<tr ng-repeat="link in project.links">
+															<td>{{ link.projectId }}</td>
+															<td>{{ link.comment }}</td>
+															<td><a href="" ng-click="remove(link.projectId)" class="glyphicon glyphicon-search"></a></td>
+															<td><a href="" ng-click="edite(link.projectId)" class="glyphicon glyphicon-search"></a></td>
+														</tr>
+
+													</tbody>
+												</table>
+											</div>
 
 
 										</div>

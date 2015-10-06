@@ -9,23 +9,22 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Project {
 
 	public String id;
-	public String name;
 	public String description;
 	public boolean processusLivraisonNormalise;
 	public TypeProjet type;
 	public String responsable;
 	public String metier;
 
-	public List<String> links;
+	public List<Link> links;
 
 	public Project() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void addLink(String link) {
+	public void addLink(Link link) {
 
 		if (links == null) {
-			links = new ArrayList<String>();
+			links = new ArrayList<Link>();
 		}
 		this.links.add(link);
 
@@ -47,8 +46,8 @@ public class Project {
 		// find link project
 		boolean findLink = false;
 		if (filter.linkto != null) {
-			for (String link : this.links) {
-				if (!filter.linkto.equals(link)
+			for (Link link : this.links) {
+				if (!filter.linkto.equals(link.projectId)
 						|| filter.linkto.equals(this.id)) {
 					findLink = true;
 				}

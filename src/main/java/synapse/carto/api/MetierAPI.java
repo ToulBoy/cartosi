@@ -70,14 +70,16 @@ public class MetierAPI {
 	@PUT
 	@Path("/{id}")
 	@Produces("application/json")
-	public Response put(@PathParam("id") String id, Metier projet) {
+	public Response put(@PathParam("id") String id, Metier metier) {
 			
-		repo.store(projet, id);
+		repo.store(metier, id);
 
-		return Response.ok(projet).build();
+		return Response.ok(metier).build();
 
 	}
 
+	
+	
 	@GET
 	@Path("/")
 	@Produces("application/json")

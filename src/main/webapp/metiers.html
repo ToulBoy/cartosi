@@ -35,7 +35,7 @@
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini" ng-app="app">
-	<div class="wrapper" ng-controller="myProjectCtr">
+	<div class="wrapper" ng-controller="myMetierCtr">
 
 		<div ng-include="'./header.html'"></div>
 		<!-- Left side column. contains the logo and sidebar -->
@@ -78,9 +78,9 @@
 									<tbody>
 									
 										<tr  ng-repeat="metier in metiers">
-											<td>{{ metier.name }}</td>
+											<td>{{ metier.id }}</td>
 											<td>{{ metier.color }}</td>
-											<td><a href="./metierAdd.html?id={{ project.id }}" class="glyphicon glyphicon-search"></a></td>
+											<td><a href="./metierAdd.html?id={{ metier.id }}" class="glyphicon glyphicon-search"></a></td>
 										</tr>
 										
 									</tbody>
@@ -147,7 +147,7 @@
 	<script src="./cartosi/lib/angular-cookies.min.js"></script>
 
 	<script src="./cartosi/js/MyServices.js"></script>
-	<script src="./cartosi/js/MyProject.js"></script>
+	<script src="./cartosi/js/MyMetier.js"></script>
 
 </body>
 </html>

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import synapse.carto.data.Link;
 import synapse.carto.data.Metier;
 import synapse.carto.data.Project;
 import synapse.carto.data.TypeProjet;
@@ -49,17 +50,16 @@ public class GenerateProject {
 
 			Project project = new Project();
 
-			project.id = String.valueOf(i);
-			project.name = "project " + i;
+			project.id = "project " + i;
 			project.description = "description of the project" +i;
 			int rand = new Random().nextInt() % max;
 			if (rand < 0) {
 				rand = rand * (-1);
 			}
 
-			project.addLink(String.valueOf(rand));
+			project.addLink(new Link("project "+String.valueOf(rand), "comment"));
 
-			project.metier = GenerateMetier.getMetier(new Random().nextInt() % 3).name;
+			project.metier = GenerateMetier.getMetier(new Random().nextInt() % 3).id;
 
 			project.type = (i==15 || i==35 )? TypeProjet.referentiel : TypeProjet.application;
 //			project.type =  ? TypeProjet.referentiel : TypeProjet.application;

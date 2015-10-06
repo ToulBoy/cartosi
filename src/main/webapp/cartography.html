@@ -67,8 +67,8 @@
 							<span class="info-box-icon bg-aqua"><i
 								class="fa fa-tachometer"></i></span>
 							<div class="info-box-content">
-								<span class="info-box-text">{{translate.COUNT_PROJECTS}}</span>
-								<span class="info-box-number">{{ si.nbProjects }}</span>
+								<span class="info-box-text">{{translate.COUNT_PROJECTS}}</span> <span
+									class="info-box-number">{{ si.nbProjects }}</span>
 							</div>
 							<!-- /.info-box-content -->
 						</div>
@@ -97,8 +97,8 @@
 							<span class="info-box-icon bg-red"><i
 								class="fa  fa-balance-scale"></i></span>
 							<div class="info-box-content">
-								<span class="info-box-text">{{translate.COUNT_CONNEXION}}</span>
-								<span class="info-box-number">{{ si.nbLinks }}</span>
+								<span class="info-box-text">{{translate.COUNT_CONNEXION}}</span> <span
+									class="info-box-number">{{ si.nbLinks }}</span>
 							</div>
 							<!-- /.info-box-content -->
 						</div>
@@ -110,8 +110,8 @@
 							<span class="info-box-icon bg-yellow"><i
 								class="fa fa-map-signs"></i></span>
 							<div class="info-box-content">
-								<span class="info-box-text">{{translate.FUNCTIONALS_DOMAINS}}</span>
-								<span class="info-box-number">{{ si.nbMetiers }}</span>
+								<span class="info-box-text">{{translate.FUNCTIONALS_DOMAINS}}</span> <span
+									class="info-box-number">{{ si.nbMetiers }}</span>
 							</div>
 							<!-- /.info-box-content -->
 						</div>
@@ -122,37 +122,77 @@
 				<!-- /.row -->
 
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-12">
 						<div class="box">
-							<!-- /.box-header -->
-							<!-- DONUT CHART -->
-							<div class="box box-danger">
-								<div class="box-header with-border">
-									<h3 class="box-title">{{translate.PROJET_BY_FUNCTIONALS_DOMAINS}}</h3>
-<!-- 									<div class="box-tools pull-right"> -->
-<!-- 										<button class="btn btn-box-tool" data-widget="collapse"> -->
-<!-- 											<i class="fa fa-minus"></i> -->
-<!-- 										</button> -->
-<!-- 										<button class="btn btn-box-tool" data-widget="remove"> -->
-<!-- 											<i class="fa fa-times"></i> -->
-<!-- 										</button> -->
-<!-- 									</div> -->
-								</div>
-								<div class="box-body">
-									<canvas id="pieChart" style="height: 250px"></canvas>
-								</div>
-								<!-- /.box-body -->
-							</div>
-							<!-- /.box -->
+							<div class="box-header with-border">
+								<h3 class="box-title">Main Carto</h3>
+								<div class="row">
+									<div class="col-sm-4 col-xs-6">
+										<div class="form-group">
+											<label>{{translate.FUNCTIONAL_DOMAIN}}</label> <select ng-change="updateMap()"
+												ng-model="filter.metier" class="form-control select2"
+												style="width: 100%;">
+												<option selected="selected" value="">------</option>
+												<option ng-repeat="option in metiers"
+													value="{{option.name}}">{{option.name}}</option>
+											</select>
+										</div>
+										<!-- /.form-group -->
+									</div>
+									<!-- /.col -->
+									<div class="col-sm-4 col-xs-6">
+										<div class="form-group">
+											<label>{{translate.TEAM_LEADER}}</label> <select ng-change="updateMap()"
+												class="form-control " ng-model="filter.responsable"
+												style="width: 100%;">
+												<option selected="selected" value="">------</option>
+												<option ng-repeat="option in responsables"
+													value="{{option.email}}">{{option.email}}</option>
 
+											</select>
+										</div>
+										<!-- /.form-group -->
+									</div>
+									<!-- /.col -->
+									<div class="col-sm-4 col-xs-6">
+										<div class="form-group">
+											<label>{{translate.LINK_WITH_THE_PROJECT}}</label> <select
+												ng-change="updateMap()" class="form-control "
+												ng-model="filter.linkto" style="width: 100%;">
+												<option selected="selected" value="">------</option>
+												<option ng-repeat="option in projects" value="{{option.id}}">{{option.name}}</option>
+											</select>
+										</div>
+										<!-- /.form-group -->
+									</div>
+									<!-- /.col -->
+									<!-- 									<div class="col-sm-3 col-xs-6"> -->
+									<!-- 										<div class="form-group"> -->
+									<!-- 											<label>Versions</label> <select ng-change="selectAction()" -->
+									<!-- 												class="form-control " ng-model="filter.version" -->
+									<!-- 												style="width: 100%;"> -->
+									<!-- 												<option ng-repeat="option in projects" -->
+									<!-- 													value="{{option.name}}">{{option.name}}</option> -->
+									<!-- 											</select> -->
+									<!-- 										</div> -->
+									<!-- 										/.form-group -->
+									<!-- 									</div> -->
+								</div>
+								<!-- /.row -->
+							</div>
+							<!-- /.box-header -->
+							<div class="box-body">
+								<div id="mynetwork"></div>
+							</div>
 							<!-- ./box-body -->
 
 
-							<div class="box-footer"></div>
+							<div class="box-footer">
+							</div>
 							<!-- /.box-footer -->
-							<!-- 							<div id="loadingMap" class="overlay" style="display: none"> -->
-							<!-- 								<i class="fa fa-refresh fa-spin"></i> -->
-							<!-- 							</div> -->
+							<div id="loadingMap" class="overlay" style="display: none">
+								<i class="fa fa-refresh fa-spin"></i>
+							</div>
 						</div>
 						<!-- /.box -->
 					</div>
@@ -357,7 +397,6 @@
 	<!-- Select2 -->
 	<!-- 	<script src="./plugins/select2/select2.full.min.js"></script> -->
 
-	<script src="./plugins/chartjs/Chart.min.js"></script>
 
 
 	<!-- AdminLTE Skins. Choose a skin from the css/skins -->
@@ -365,11 +404,10 @@
 	<script src="./cartosi/lib/angular-resource.min.js"></script>
 	<script src="./cartosi/lib/angular-cookies.min.js"></script>
 	<script src="./cartosi/lib/i18n/angular-locale_en.js"></script>
-	<!-- 	http://blog.novanet.no/creating-multilingual-support-using-angularjs/ -->
+<!-- 	http://blog.novanet.no/creating-multilingual-support-using-angularjs/ -->
 	<script src="./cartosi/lib/ui-bootstrap-tpls-0.13.4.min.js"></script>
 	<script src="./cartosi/lib/vis.min.js"></script>
-	<!-- ChartJS 1.0.1 -->
-	<script src="./cartosi/js/MyIndex.js"></script>
+	<script src="./cartosi/js/MyMap.js"></script>
 
 
 </body>

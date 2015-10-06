@@ -7,6 +7,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
 import javax.ws.rs.core.Response.Status;
 
 import org.apache.commons.logging.Log;
@@ -20,20 +21,17 @@ public class ProjectAPI {
 
 	protected final Log logger = LogFactory.getLog(getClass());
 
-	
 	ProjetRepo repo = new ProjetRepo();
-	
+
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
 	public Response get(@PathParam("id") String id) {
 
-		Project projet = repo.get(id,Project.class);
+		Project projet = repo.get(id, Project.class);
 		try {
 			if (projet == null) {
-				return Response.status(Status.NOT_FOUND)
-						.entity("désolé pas de projet avec l'id '" + id + "'")
-						.build();
+				return Response.status(Status.NOT_FOUND).build();
 			}
 
 		} catch (Exception e) {
@@ -49,15 +47,13 @@ public class ProjectAPI {
 	@Produces("application/json")
 	public Response delete(@PathParam("id") String id) {
 
-		Project projet = repo.get(id,Project.class);
+		Project projet = repo.get(id, Project.class);
 		try {
 			if (projet == null) {
-				return Response.status(Status.NOT_FOUND)
-						.entity("désolé pas de projet avec l'id '" + id + "'")
-						.build();
+				return Response.status(Status.NOT_FOUND).build();
 			}
 
-			repo.delete(id,Project.class);
+			repo.delete(id, Project.class);
 
 		} catch (Exception e) {
 			return Response.serverError().build();
@@ -71,7 +67,13 @@ public class ProjectAPI {
 	@Path("/{id}")
 	@Produces("application/json")
 	public Response put(@PathParam("id") String id, Project projet) {
-			
+
+		if (id == null && repo.get(id, Project.class) != null) {
+			return Response.status(Status.CONFLICT).build();
+		} else if (id == null) {
+			id = projet.id;
+		}
+
 		repo.store(projet, id);
 
 		return Response.ok(projet).build();
@@ -87,7 +89,4 @@ public class ProjectAPI {
 
 	}
 
-	
-	
-	
 }

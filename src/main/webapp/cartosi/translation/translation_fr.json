@@ -14,10 +14,12 @@
     "FUNCTIONAL_DOMAIN" : "Domaine fonctionnel",
     "FUNCTIONALS_DOMAINS" : "Domaines fonctionnels",
     "LINK_WITH_THE_PROJECT" : "Lié avec le(s) projet(s)",
+    "LINK_WITH_THE_PROJECT_COMMENT" : "Commentaire",	
     "COLOR" : "Couleur",
     "NAME" : "NOM",
     "COUNT_PROJECTS" : "NB PROJETS",
     "COUNT_CONNEXION" : "NB INTERCONNEXIONS",
-    "VALIDATE" : "Enregistrer"
+    "VALIDATE" : "Enregistrer",
+    "PROJET_BY_FUNCTIONALS_DOMAINS" : "Projet par domaines fonctionnels"
    
 }

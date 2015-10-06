@@ -281,10 +281,10 @@ function updateDashbord(scope, resource, filter) {
 						var myedges = [];
 						angular.forEach(siProjects, function(project, key) {
 							angular.forEach(project.links,
-									function(value, key) {
+									function(link, key) {
 										myedges.push({
 											from : project.id,
-											to : value,
+											to : link.projectId,
 											arrows : "to",
 //											title : value.typeLien
 										});

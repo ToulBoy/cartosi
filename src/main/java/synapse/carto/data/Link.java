@@ -2,16 +2,18 @@ package synapse.carto.data;
 
 public class Link {
 
-	public String version;
 
-	public String to;
+	public String projectId;
 
-	public Link(String version, String idProject) {
+	public String comment;
+
+	public Link(String projectid, 
+			String comment) {
 		super();
-		this.version = version;
-		this.to = idProject;
-	}
-
+		this.projectId = projectid;
+		this.comment = comment;
+	} 
+	
 	public Link() {
 		// TODO Auto-generated constructor stub
 	}

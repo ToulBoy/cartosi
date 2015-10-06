@@ -40,7 +40,7 @@ public class GenerateMetier {
 
 		for (int i = 0; i < 4; i++) {
 			Metier metier = GenerateMetier.getMetier(i);
-			repo.store(metier, metier.name);
+			repo.store(metier, metier.id);
 		}
 	}
 }
