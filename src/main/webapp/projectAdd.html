@@ -81,7 +81,7 @@
 										<div class="form-group">
 											<label for="name">{{translate.PROJET_NAME}} </label> <input
 												type="text" class="form-control" id="name"
-												ng-model="project.name">
+												ng-model="project.id">
 										</div>
 
 										<div class="form-group">
@@ -102,7 +102,7 @@
 											<label for="emailResponsable">{{translate.FUNCTIONAL_DOMAIN}}</label>
 											<select class="form-control" ng-model="project.metier">
 												<option ng-repeat="option in metiers"
-													value="{{option.name}}">{{option.name}}</option>
+													value="{{option.id}}">{{option.id}}</option>
 											</select>
 										</div>
 
