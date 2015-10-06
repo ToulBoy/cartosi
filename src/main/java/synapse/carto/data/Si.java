@@ -1,122 +1,104 @@
 package synapse.carto.data;
 
-import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.bind.annotation.XmlRootElement;
+import synapse.carto.repo.MetierRepo;
+import synapse.carto.repo.ResponsableRepo;
 
-import org.apache.log4j.Logger;
-
-@XmlRootElement
 public class Si {
 
-	String descriptif;
-	List<Metier> metiers;
-	List<Project> projects;
-	int nbProjects;
-	int nbResponsable;
-	int link;
-	
-	
+	HashMap<String, Stat> projectsByMetier = new HashMap<String, Stat>();
+	HashMap<String, Stat> linksByMetier = new HashMap<String, Stat>();
+	int nbProjects = 0;
+	int nbResponsable = 0;
+	int nbLinks = 0;
+	int nbMetiers = 0;
 
-	private static Logger logger = Logger.getLogger(Si.class);
+	MetierRepo repo = new MetierRepo();
+	ResponsableRepo responsableRepo = new ResponsableRepo();
 
-	public static synchronized void store(Si si) {
-		try {
+	public Si(List<Project> projects) {
 
-			JAXBContext jaxbContext = JAXBContext.newInstance(Si.class);
+		List<Metier> metiers = repo.getAll(Metier.class);
 
-			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+		List<Responsable> responsables = responsableRepo
+				.getAll(Responsable.class);
 
-			// output pretty printed
-			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
-			jaxbMarshaller.marshal(si, getSettingFile());
-
-		} catch (JAXBException e) {
-			throw new RuntimeException(e);
+		if (responsables != null) {
+			nbResponsable = responsables.size();
 		}
 
-	}
-
-	private static File getSettingFile() {
-		File mainDirectory = new File(System.getProperty("user.home")
-				+ File.separator + ".cartosi");
-		if (!mainDirectory.exists()) {
-
-			mainDirectory.mkdirs();
-			logger.info("création du répertoire de configuration "
-					+ mainDirectory.getAbsolutePath());
+		if (metiers != null) {
+			nbMetiers = metiers.size();
 		}
 
-		return new File(mainDirectory.getAbsolutePath() + File.separator
-				+ "main.xml");
-	}
+		if (projects == null)
+			return;
 
-	public static Si get() {
-		Si si = null;
-		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(Si.class);
+		nbProjects = projects.size();
 
-			File file = getSettingFile();
-			if (!file.exists()) {
-				logger.info("pas de SI trouvé");
-				return null;
+		for (Project project : projects) {
+
+			Stat byMetier = projectsByMetier.get(project.metier);
+
+			if (byMetier == null) {
+				byMetier = new Stat();
+				Metier metier = repo.get(project.metier, Metier.class);
+				byMetier.value = 0;
+				byMetier.label = metier.id;
+				byMetier.color = metier.color;
 			}
 
-			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			si = (Si) jaxbUnmarshaller.unmarshal(file);
-		} catch (JAXBException e) {
-			throw new RuntimeException(e);
+			byMetier.value++;
+			projectsByMetier.put(project.metier, byMetier);
+
+			if (project.links == null) {
+				continue;
+			}
+
+			nbLinks += project.links.size();
+
+			Stat byLinks = linksByMetier.get(project.metier);
+
+			if (byLinks == null) {
+				byLinks = new Stat();
+				Metier metier = repo.get(project.metier, Metier.class);
+				byLinks.value = 0;
+				byLinks.label = metier.id;
+				byLinks.color = metier.color;
+			}
+
+			byLinks.value += project.links.size();
+
+			linksByMetier.put(project.metier, byLinks);
+
 		}
-		return si;
+	}
+
+	public HashMap<String, Stat> getLinksByMetier() {
+		return linksByMetier;
+	}
+
+	public HashMap<String, Stat> getProjectsByMetier() {
+		return projectsByMetier;
+	}
+
+	public int getNbMetiers() {
+		return nbMetiers;
 	}
 	
 	
-	
-	
-
-	public String getDescriptif() {
-		return descriptif;
-	}
-
-	public List<Metier> getMetiers() {
-		return metiers;
-	}
-
-	public List<Project> getProjects() {
-		return projects;
-	}
-
 	public int getNbProjects() {
 		return nbProjects;
 	}
 
-	public int getResponsable() {
+	public int getNbResponsable() {
 		return nbResponsable;
 	}
 
-	public int getLink() {
-		return link;
-	}
-
-	public static Logger getLogger() {
-		return logger;
-	}
-
-	public static void main(String[] args) {
-		Si projet = new Si();
-		projet.descriptif = "test";
-		store(projet);
-
-		// Si.store(new Si());
-		Si si = Si.get();
-
-		System.out.println(si);
+	public int getNbLinks() {
+		return nbLinks;
 	}
 
 }

@@ -35,9 +35,9 @@ public class ProjectResponse {
 				hashMapMetier.put(key.metier, key.metier);
 			}
 			
-			
-			nbLinks= nbLinks+ key.links.size();
-			
+			if(key.links!=null){
+				nbLinks= nbLinks+ key.links.size();
+			}
 			
 		}
 		

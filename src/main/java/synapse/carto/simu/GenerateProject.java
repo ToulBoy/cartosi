@@ -12,13 +12,11 @@ import synapse.carto.repo.ProjetRepo;
 
 public class GenerateProject {
 
-
 	public static Metier getType(int i) {
-		if(i<0){
-			i = i*(-1);
+		if (i < 0) {
+			i = i * (-1);
 		}
-		
-		
+
 		switch (i) {
 		case 0:
 
@@ -41,7 +39,7 @@ public class GenerateProject {
 		// #f0ad4e jaune
 		// #f5f5f5 gris
 	}
-	
+
 	public static void main(String[] args) {
 		ProjetRepo repo = new ProjetRepo();
 
@@ -51,25 +49,39 @@ public class GenerateProject {
 			Project project = new Project();
 
 			project.id = "project " + i;
-			project.description = "description of the project" +i;
+			project.description = "description of the project" + i;
 			int rand = new Random().nextInt() % max;
 			if (rand < 0) {
 				rand = rand * (-1);
 			}
 
-			project.addLink(new Link("project "+String.valueOf(rand), "comment"));
-
-			project.metier = GenerateMetier.getMetier(new Random().nextInt() % 3).id;
-
-			project.type = (i==15 || i==35 )? TypeProjet.referentiel : TypeProjet.application;
-//			project.type =  ? TypeProjet.referentiel : TypeProjet.application;
-			project.responsable = i+"@"+i+".com";
 			
-			List<String>versions = new ArrayList<String>();
-			versions.add(i+"."+1);
-			versions.add(i+"."+2);
-			versions.add(i+"."+3);
-			versions.add(i+"."+4);
+			for (int j = 0; j < 10; j++) {
+				if (new Random().nextBoolean()) {
+					
+					int pos = new Random().nextInt() % max;
+					if (pos < 0) {
+						pos = pos * (-1);
+					}
+					project.addLink(new Link("project " + String.valueOf(pos),
+							"comment"));
+
+				}
+			}
+
+			project.metier = GenerateMetier
+					.getMetier(new Random().nextInt() % 3).id;
+
+			project.type = (i == 15 || i == 35) ? TypeProjet.referentiel
+					: TypeProjet.application;
+			// project.type = ? TypeProjet.referentiel : TypeProjet.application;
+			project.responsable = i + "@" + i + ".com";
+
+			List<String> versions = new ArrayList<String>();
+			versions.add(i + "." + 1);
+			versions.add(i + "." + 2);
+			versions.add(i + "." + 3);
+			versions.add(i + "." + 4);
 			repo.store(project, project.id);
 
 		}

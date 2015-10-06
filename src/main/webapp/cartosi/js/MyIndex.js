@@ -32,18 +32,15 @@ app.controller('myMainCtrl', [ '$scope', '$resource', 'myTranslators',
 
 			};
 
-			updateDashbord($scope, $resource, $scope.filter);
+			updateDashbord($scope, $resource);
 
 		} ]);
 
-function updateDashbord(scope, resource, filter) {
+function updateDashbord(scope, resource) {
 
-	var siQuery = resource('./api/si/search', {
+	var siQuery = resource('./api/si/', {
 		id : '@id'
 	}, {
-		put : {
-			method : 'PUT'
-		},
 		query : {
 			method : 'GET',
 			isArray : false,
@@ -84,51 +81,17 @@ function updateDashbord(scope, resource, filter) {
 	scope.responsables = responsableQuery.query(function() {
 	});
 
-	scope.si  = siQuery.query({
-		metier : filter.metier
-	}, function() {
-	});
-	var repartitionMetier = [];
-	scope.projects = projectQuery
-			.query(function(data) {
-				angular
-						.forEach(
-								data,
-								function(myProject, key) {
-
-									if (repartitionMetier[myProject.metier] == null) {
-										repartitionMetier[myProject.metier] = {};
-										repartitionMetier[myProject.metier].value = 0;
-									} else {
-										repartitionMetier[myProject.metier].value = repartitionMetier[myProject.metier].value + 1;
-										var color;
-										angular
-												.forEach(
-														scope.metiers,
-														function(metier, key) {
-
-															if (metier.id == myProject.metier) {
-																color = metier.color;
-															}
-
-														});
-
-										repartitionMetier[myProject.metier].color = color;
-										repartitionMetier[myProject.metier].highlight = color;
-										repartitionMetier[myProject.metier].label = myProject.metier;
-									}
-
-								});
-
-				var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
-				var pieChart = new Chart(pieChartCanvas);
-
-				var PieData = [];
+	scope.si = siQuery.query(function(data) {
+	
+				var repartitionMetier = data.projectsByMetier;
+				var pieChartCanvas1 = $("#pieChart1").get(0).getContext("2d");
+				var pieChart1 = new Chart(pieChartCanvas1);
+				var PieData1 = [];
 
 				angular.forEach(scope.metiers, function(data, key) {
 					if (repartitionMetier[data.id] != null
 							&& repartitionMetier[data.id].value != null) {
-						PieData.push({
+						PieData1.push({
 							value : repartitionMetier[data.id].value,
 							color : repartitionMetier[data.id].color,
 							highlight : repartitionMetier[data.id].highlight,
@@ -137,39 +100,90 @@ function updateDashbord(scope, resource, filter) {
 					}
 				});
 
-				var pieOptions = {
-					// Boolean - Whether we should show a stroke on each segment
-					segmentShowStroke : true,
-					// String - The colour of each segment stroke
-					segmentStrokeColor : "#fff",
-					// Number - The width of each segment stroke
-					segmentStrokeWidth : 2,
-					// Number - The percentage of the chart that we cut out of
-					// the middle
-					percentageInnerCutout : 50, // This is 0 for Pie charts
-					// Number - Amount of animation steps
-					animationSteps : 100,
-					// String - Animation easing effect
-					animationEasing : "easeOutBounce",
-					// Boolean - Whether we animate the rotation of the Doughnut
-					animateRotate : true,
-					// Boolean - Whether we animate scaling the Doughnut from
-					// the centre
-					animateScale : false,
-					// Boolean - whether to make the chart responsive to window
-					// resizing
-					responsive : true,
-					// Boolean - whether to maintain the starting aspect ratio
-					// or not when
-					// responsive, if set to false, will take up entire
-					// container
-					maintainAspectRatio : true,
-					// String - A legend template
-					legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
-				};
+				var repartitionLink = data.linksByMetier;
+				var pieChartCanvas2 = $("#pieChart2").get(0).getContext("2d");
+				var pieChart2 = new Chart(pieChartCanvas2);
+				var PieData2 = [];
+
+				angular.forEach(scope.metiers, function(data, key) {
+					if (repartitionLink[data.id] != null
+							&& repartitionLink[data.id].value != null) {
+						PieData2.push({
+							value : repartitionLink[data.id].value,
+							color : repartitionLink[data.id].color,
+							highlight : repartitionLink[data.id].highlight,
+							label : repartitionLink[data.id].label
+						});
+					}
+				});
+
+				var pieOptions1 = {
+						// Boolean - Whether we should show a stroke on each segment
+						segmentShowStroke : true,
+						// String - The colour of each segment stroke
+						segmentStrokeColor : "#fff",
+						// Number - The width of each segment stroke
+						segmentStrokeWidth : 2,
+						// Number - The percentage of the chart that we cut out of
+						// the middle
+						percentageInnerCutout : 50, // This is 0 for Pie charts
+						// Number - Amount of animation steps
+						animationSteps : 100,
+						// String - Animation easing effect
+						animationEasing : "easeOutBounce",
+						// Boolean - Whether we animate the rotation of the Doughnut
+						animateRotate : true,
+						// Boolean - Whether we animate scaling the Doughnut from
+						// the centre
+						animateScale : false,
+						// Boolean - whether to make the chart responsive to window
+						// resizing
+						responsive : true,
+						// Boolean - whether to maintain the starting aspect ratio
+						// or not when
+						// responsive, if set to false, will take up entire
+						// container
+						maintainAspectRatio : true,
+						// String - A legend template
+						legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+					};
+				
+				var pieOptions2 = {
+						// Boolean - Whether we should show a stroke on each segment
+						segmentShowStroke : true,
+						// String - The colour of each segment stroke
+						segmentStrokeColor : "#fff",
+						// Number - The width of each segment stroke
+						segmentStrokeWidth : 2,
+						// Number - The percentage of the chart that we cut out of
+						// the middle
+						percentageInnerCutout : 50, // This is 0 for Pie charts
+						// Number - Amount of animation steps
+						animationSteps : 100,
+						// String - Animation easing effect
+						animationEasing : "easeOutBounce",
+						// Boolean - Whether we animate the rotation of the Doughnut
+						animateRotate : true,
+						// Boolean - Whether we animate scaling the Doughnut from
+						// the centre
+						animateScale : false,
+						// Boolean - whether to make the chart responsive to window
+						// resizing
+						responsive : true,
+						// Boolean - whether to maintain the starting aspect ratio
+						// or not when
+						// responsive, if set to false, will take up entire
+						// container
+						maintainAspectRatio : true,
+						// String - A legend template
+						legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+					};
 				// Create pie or douhnut chart
 				// You can switch between pie and douhnut using the method
 				// below.
-				pieChart.Doughnut(PieData, pieOptions);
-			});
+				pieChart1.Doughnut(PieData1, pieOptions1);
+				pieChart2.Doughnut(PieData2, pieOptions2);
+
+	
+	});
 }

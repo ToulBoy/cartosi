@@ -20,6 +20,8 @@
     "COUNT_PROJECTS" : "NB PROJETS",
     "COUNT_CONNEXION" : "NB INTERCONNEXIONS",
     "VALIDATE" : "Enregistrer",
-    "PROJET_BY_FUNCTIONALS_DOMAINS" : "Projet par domaines fonctionnels"
+    "PROJET_BY_FUNCTIONALS_DOMAINS" : "Nombre de projet par domaines fonctionnels",
+    "PROJET_BY_LINKS" : "Nombre d'interconnexions par domaines fonctionnels",
+    "CARTOGRAPHY" : "Cartographie du SI"
    
 }
