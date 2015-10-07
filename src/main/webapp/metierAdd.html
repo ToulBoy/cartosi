@@ -23,8 +23,9 @@
          folder instead of downloading all of them to reduce the load. -->
 <link rel="stylesheet" href="./dist/css/skins/_all-skins.min.css">
 
-   <!-- Bootstrap Color Picker -->
-    <link rel="stylesheet" href="./plugins/colorpicker/bootstrap-colorpicker.min.css">
+<!-- Bootstrap Color Picker -->
+<link rel="stylesheet"
+	href="./plugins/colorpicker/bootstrap-colorpicker.min.css">
 
 
 <link rel="stylesheet" href="./cartosi/css/carto.css">
@@ -81,12 +82,12 @@
 										</div>
 
 										<div class="form-group">
-											<label for="name">{{translate.COLOR}}</label> 
-												<select
-												class="form-control" id="colorMetier" ng-change ="color()" ng-model="metier.color">
-												<option value="#00c0ef" >#00c0ef</option>
-												<option value="#f39c12" >#f39c12</option>
-												<option value="#00a65a" >#00a65a</option>
+											<label for="name">{{translate.COLOR}}</label> <select
+												class="form-control" id="colorMetier" ng-change="color()"
+												ng-model="metier.color">
+												<option value="#00c0ef">#00c0ef</option>
+												<option value="#f39c12">#f39c12</option>
+												<option value="#00a65a">#00a65a</option>
 												<option value="#dd4b39">#dd4b39</option>
 												<option value="#000000">#000000</option>
 											</select>
@@ -95,11 +96,12 @@
 								</div>
 								<!-- /.box-body -->
 
-								<div class="box-footer">
-									<button type="submit" ng-click="update()"
-										class="btn btn-primary">{{translate.VALIDATE}}</button>
-									<!-- 										<button type="button" ng-click="update()" -->
-									<!-- 											class="btn btn-primary btn-lg btn-block">Enregistrer</button> -->
+								<!-- /.box-body -->
+								<div class="box-footer clearfix">
+									<a href="#" class="btn btn-lg btn-default btn-flat pull-right">{{translate.CANCEL}}</a>
+
+									<a href="#" class="btn btn-lg btn-primary btn-flat pull-left"
+										ng-click="update()">{{translate.VALIDATE}}</a>
 								</div>
 							</form>
 						</div>

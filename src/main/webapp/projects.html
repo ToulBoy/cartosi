@@ -49,11 +49,11 @@
 				<h1>
 					{{translate.TEAM_LEADERS}} <small>Preview</small>
 				</h1>
-				<ol class="breadcrumb">
-					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-					<li><a href="#">Forms</a></li>
-					<li class="active">General Elements</li>
-				</ol>
+<!-- 				<ol class="breadcrumb"> -->
+<!-- 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li> -->
+<!-- 					<li><a href="#">Forms</a></li> -->
+<!-- 					<li class="active">General Elements</li> -->
+<!-- 				</ol> -->
 			</section>
 
 			<!-- Main content -->
@@ -61,7 +61,7 @@
 				<div class="row">
 					<!-- left column -->
 					<div class="col-md-10 col-md-offset-1">
-						<div class="box">
+						<div class="box box box-info">
 							<div class="box-header">
 								<h3 class="box-title">{{translate.TEAM_LEADERS}}</h3>
 							</div>
@@ -76,7 +76,7 @@
 											<th>Email chef de projet MOE</th>
 											<th>Domaine fonctionnel</th>
 											<th>Type de projet</th>
-											<td> <span  class="glyphicon glyphicon-search"></span> </td>
+											<td> <span  class="fa fa-fw fa-edit"></span> </td>
 										</tr>
 									</thead>
 									<tbody>
@@ -88,7 +88,7 @@
 											<td>{{ project.responsable }}</td>
 											<td>{{ project.metier }}</td>
 											<td>{{ project.type }}</td>
-											<td><a href="./projectAdd.html?id={{ project.id }}" class="glyphicon glyphicon-search"></a></td>
+											<td><a href="./projectAdd.html?id={{ project.id }}" class="fa fa-fw fa-edit"></a></td>
 										</tr>
 										
 									</tbody>

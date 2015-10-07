@@ -24,10 +24,19 @@ app.service("myTranslators", [
 app.controller(
 		'myMainCtrl', 
 		[ '$scope', '$resource', 'myTranslators',
-			function($scope, $resource, myTranslators) {	
+			function($scope, $resource, myTranslators) {
 			
 			
-			$scope.filter = {};
+//			 var metier = decodeURI(location.search.split('metier=')[1]);
+//			 var linkto = decodeURI(location.search.split('linkto=')[1]);
+//			 var responsable = decodeURI(location.search.split('responsable=')[1]);
+			
+			 
+			 
+//			$scope.filter = {"metier" : metier,
+//					"linkto" : linkto,
+//					"responsable" : responsable};
+			
 			myTranslators.getTranslation($scope);
 
 			$scope.updateMap = function() {
@@ -82,7 +91,7 @@ function filterMetier($scope) {
 			} ]);
 			idHidden.push(data.id);
 		} else {
-			$scope.network.focus(data.id);
+			// $scope.network.focus(data.id);
 		}
 
 	});
@@ -125,7 +134,7 @@ function filterResponsable($scope) {
 			idHidden.push(data.id);
 		} else {
 
-			$scope.network.focus(data.id);
+			// $scope.network.focus(data.id);
 		}
 
 	});
@@ -161,7 +170,7 @@ function filterLinkto($scope) {
 
 			nodeToSave.push(data.from);
 			
-			$scope.network.focus(data.id);
+			// $scope.network.focus(data.id);
 
 
 		} else {
@@ -187,7 +196,7 @@ function filterLinkto($scope) {
 				title : data.title
 			} ]);
 		} else {
-			$scope.network.focus(data.id);
+			// $scope.network.focus(data.id);
 		}
 
 	});
@@ -196,7 +205,7 @@ function filterLinkto($scope) {
 
 function updateDashbord(scope, resource, filter) {
 
-	var siQuery = resource('./api/si/search', {
+	var siQuerySearch = resource('./api/si/search', {
 		id : '@id'
 	}, {
 		put : {
@@ -236,6 +245,20 @@ function updateDashbord(scope, resource, filter) {
 		}
 	});
 
+	
+	var siQuery = resource('./api/si/', {
+		id : '@id'
+	}, {
+		query : {
+			method : 'GET',
+			isArray : false,
+			params : {
+				action : "search",
+				metier : '@metier'
+			}
+		}
+	});
+	
 	scope.metiers = metierQuery.query(function() {
 	});
 	scope.responsables = responsableQuery.query(function() {
@@ -245,16 +268,16 @@ function updateDashbord(scope, resource, filter) {
 
 	var mygroups = {};
 	$("#loadingMap").show()
-	var si = siQuery
+	scope.si = siQuery.query(function(data) {});
+		
+	
+		siQuerySearch
 			.query(
-					{
-						metier : filter.metier
-					},
-					function() {
+					filter,
+					function(siFilter) {
 
-						scope.si = si;
 						var mynodes = [];
-						var siProjects = scope.projects;
+						var siProjects = siFilter.projects;
 
 						angular.forEach(siProjects, function(value, key) {
 							mynodes.push({
@@ -285,8 +308,9 @@ function updateDashbord(scope, resource, filter) {
 										myedges.push({
 											from : project.id,
 											to : link.projectId,
+											label : link.comment,
 											arrows : "to",
-//											title : value.typeLien
+// title : value.typeLien
 										});
 									});
 						});
@@ -351,10 +375,6 @@ function updateDashbord(scope, resource, filter) {
 
 						$('#mynetwork').empty();
 						var container = $('#mynetwork')[0];
-						if (scope.network != null) {
-							scope.network.destroy();
-							scope.network = null;
-						}
 
 						// initialize your network!
 						scope.network = new vis.Network(container, data,

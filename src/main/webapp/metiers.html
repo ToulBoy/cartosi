@@ -47,13 +47,13 @@
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					General Form Elements <small>Preview</small>
+					{{translate.FUNCTIONALS_DOMAINS}} <small>Preview</small>
 				</h1>
-				<ol class="breadcrumb">
-					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-					<li><a href="#">Forms</a></li>
-					<li class="active">General Elements</li>
-				</ol>
+<!-- 				<ol class="breadcrumb"> -->
+<!-- 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li> -->
+<!-- 					<li><a href="#">Forms</a></li> -->
+<!-- 					<li class="active">General Elements</li> -->
+<!-- 				</ol> -->
 			</section>
 
 			<!-- Main content -->
@@ -61,7 +61,7 @@
 				<div class="row">
 					<!-- left column -->
 					<div class="col-md-10 col-md-offset-1">
-						<div class="box">
+						<div class="box box box-info">
 							<div class="box-header">
 								<h3 class="box-title">{{translate.FUNCTIONALS_DOMAINS}}</h3>
 							</div>
@@ -72,7 +72,7 @@
 										<tr>
 											<th>{{translate.NAME}}</th>
 											<th>{{translate.COLOR}}</th>
-											<td> <span  class="glyphicon glyphicon-search"></span> </td>
+											<td> <span  class="fa fa-fw fa-edit"></span> </td>
 										</tr>
 									</thead>
 									<tbody>
@@ -80,7 +80,7 @@
 										<tr  ng-repeat="metier in metiers">
 											<td>{{ metier.id }}</td>
 											<td style="background-color:{{ metier.color }} " >{{ metier.color }}</td>
-											<td><a href="./metierAdd.html?id={{ metier.id }}" class="glyphicon glyphicon-search"></a></td>
+											<td><a href="./metierAdd.html?id={{ metier.id }}" class="fa fa-fw fa-edit"></a></td>
 										</tr>
 										
 									</tbody>
@@ -88,7 +88,7 @@
 										<tr>
 											<th>Name</th>
 											<th>Color</th>
-											<td> <span  class="glyphicon glyphicon-search"></span> </td>
+											<td> <span  class="fa fa-fw fa-edit"></span> </td>
 										</tr>
 									</tfoot>
 								</table>

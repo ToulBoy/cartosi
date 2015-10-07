@@ -73,13 +73,7 @@
 
 									<div class="panel-body">
 										<div class="form-group">
-											<label for="id">{{translate.PROJET_ID}}</label> <input
-												type="text" class="form-control" id="id"
-												ng-model="project.id" readonly>
-										</div>
-
-										<div class="form-group">
-											<label for="name">{{translate.PROJET_NAME}} </label> <input
+											<label for="id">{{translate.PROJET_NAME}}</label> <input
 												type="text" class="form-control" id="name"
 												ng-model="project.id">
 										</div>
@@ -101,8 +95,7 @@
 										<div class="form-group">
 											<label for="emailResponsable">{{translate.FUNCTIONAL_DOMAIN}}</label>
 											<select class="form-control" ng-model="project.metier">
-												<option ng-repeat="option in metiers"
-													value="{{option.id}}">{{option.id}}</option>
+												<option ng-repeat="option in metiers" value="{{option.id}}">{{option.id}}</option>
 											</select>
 										</div>
 
@@ -140,17 +133,18 @@
 														<tr>
 															<th>{{translate.PROJET_ID}}</th>
 															<th>{{translate.LINK_WITH_THE_PROJECT_COMMENT}}</th>
-															<td><span class="glyphicon glyphicon-search"></span>
-															<td><span class="glyphicon glyphicon-search"></span>
-															</td>
+															<td><span class="fa fa-fw fa-remove"></span>
+															<td><span class="fa fa-fw fa-edit"></span></td>
 														</tr>
 													</thead>
 													<tbody>
 														<tr ng-repeat="link in project.links">
 															<td>{{ link.projectId }}</td>
 															<td>{{ link.comment }}</td>
-															<td><a href="" ng-click="remove(link.projectId)" class="glyphicon glyphicon-search"></a></td>
-															<td><a href="" ng-click="edite(link.projectId)" class="glyphicon glyphicon-search"></a></td>
+															<td><a href="" ng-click="remove(link.projectId)"
+																class="fa fa-fw fa-remove"></a></td>
+															<td><a href="" ng-click="edite(link.projectId)"
+																class="fa fa-fw fa-edit"></a></td>
 														</tr>
 
 													</tbody>
@@ -161,12 +155,11 @@
 										</div>
 									</div>
 									<!-- /.box-body -->
+									<div class="box-footer clearfix">
+										<a href="#" class="btn btn-lg btn-default btn-flat pull-right">{{translate.CANCEL}}</a>
 
-									<div class="box-footer">
-										<button type="submit" ng-click="update()"
-											class="btn btn-primary">Enregistrer</button>
-										<!-- 										<button type="button" ng-click="update()" -->
-										<!-- 											class="btn btn-primary btn-lg btn-block">Enregistrer</button> -->
+										<a href="#" class="btn btn-lg btn-primary btn-flat pull-left"
+											ng-click="update()">{{translate.VALIDATE}}</a>
 									</div>
 							</form>
 						</div>

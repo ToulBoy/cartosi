@@ -1,7 +1,6 @@
 {  
  	"PROJECT" : "Projet",
  	"PROJECTS" : "Projets",
- 	"PROJET_ID" : "Référence",
  	"PROJET_NAME" : "Nom du projet",
  	"PROJECT_TYPE" : "Type de projet",
  	"LASTNAME" : "Nom",
@@ -20,6 +19,7 @@
     "COUNT_PROJECTS" : "NB PROJETS",
     "COUNT_CONNEXION" : "NB INTERCONNEXIONS",
     "VALIDATE" : "Enregistrer",
+    "CANCEL" : "Annuler",
     "PROJET_BY_FUNCTIONALS_DOMAINS" : "Nombre de projet par domaines fonctionnels",
     "PROJET_BY_LINKS" : "Nombre d'interconnexions par domaines fonctionnels",
     "CARTOGRAPHY" : "Cartographie du SI"
