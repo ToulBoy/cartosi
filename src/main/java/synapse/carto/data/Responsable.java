@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Responsable {
 
 	
-	public String email;
+	public String id;
 	
 
 	public String lastname;

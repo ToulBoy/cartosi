@@ -10,7 +10,7 @@ public class GenerateResponsable {
 		Responsable responsable = new Responsable();
 		responsable.lastname = String.valueOf(i);
 		responsable.firstname = String.valueOf(i);
-		responsable.email = String.valueOf(i)+"@"+String.valueOf(i)+".com";
+		responsable.id = String.valueOf(i)+"@"+String.valueOf(i)+".com";
 		
 		return 	responsable;	
 		}
@@ -25,7 +25,7 @@ public class GenerateResponsable {
 		for (int i = 0; i < 75 ; i++) {
 			Responsable responsable = getResponsable(i);
 
-			repo.store(responsable, responsable.email);
+			repo.store(responsable, responsable.id);
 		}
 	
 

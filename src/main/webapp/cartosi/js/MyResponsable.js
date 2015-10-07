@@ -4,7 +4,7 @@ app.controller('myResponsableCtr', [ '$scope', '$resource', 'myTranslators',
 		function($scope, $resource, myTranslators) {
 
 			myTranslators.getTranslation($scope);
-
+			$scope.responsable = {};
 			var projectQuery = $resource('./api/project/:id', {
 				id : '@id'
 			}, {

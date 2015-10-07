@@ -25,11 +25,20 @@ app.controller('myMetierCtr', [ '$scope', '$resource', 'myTranslators',
 				id = decodeURI(id)
 				$scope.metier = metierQuery.get({
 					"id" : id
+				},function(data){
+					$("#colorMetier").css("background-color", data.color);
 				});
 			}
 
 			$scope.update = function() {
 				metierQuery.put($scope.metier);
+			}
+			
+			
+			$scope.color = function() {
+				$("#colorMetier").css("background-color", $scope.metier.color);
+			
+			
 			}
 
 		} ]);

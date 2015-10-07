@@ -81,9 +81,15 @@
 										</div>
 
 										<div class="form-group">
-											<label for="name">{{translate.COLOR}}</label> <input
-												type="text" class="form-control my-colorpicker2"
-												ng-model="metier.color">
+											<label for="name">{{translate.COLOR}}</label> 
+												<select
+												class="form-control" id="colorMetier" ng-change ="color()" ng-model="metier.color">
+												<option value="#00c0ef" >#00c0ef</option>
+												<option value="#f39c12" >#f39c12</option>
+												<option value="#00a65a" >#00a65a</option>
+												<option value="#dd4b39">#dd4b39</option>
+												<option value="#000000">#000000</option>
+											</select>
 										</div>
 									</div>
 								</div>
@@ -156,8 +162,6 @@
 		$(function() {
 			//Colorpicker
 			$(".my-colorpicker1").colorpicker();
-			//color picker with addon
-			$(".my-colorpicker2").colorpicker();
 
 		});
 	</script>

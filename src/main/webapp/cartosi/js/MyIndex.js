@@ -154,19 +154,19 @@ function updateDashbord(scope, resource) {
 						// String - The colour of each segment stroke
 						segmentStrokeColor : "#fff",
 						// Number - The width of each segment stroke
-						segmentStrokeWidth : 2,
+						segmentStrokeWidth : 5,
 						// Number - The percentage of the chart that we cut out of
 						// the middle
-						percentageInnerCutout : 50, // This is 0 for Pie charts
+						percentageInnerCutout : 0, // This is 0 for Pie charts
 						// Number - Amount of animation steps
 						animationSteps : 100,
 						// String - Animation easing effect
 						animationEasing : "easeOutBounce",
 						// Boolean - Whether we animate the rotation of the Doughnut
-						animateRotate : true,
+						animateRotate : false,
 						// Boolean - Whether we animate scaling the Doughnut from
 						// the centre
-						animateScale : false,
+						animateScale : true,
 						// Boolean - whether to make the chart responsive to window
 						// resizing
 						responsive : true,

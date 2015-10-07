@@ -79,7 +79,7 @@
 									
 										<tr  ng-repeat="metier in metiers">
 											<td>{{ metier.id }}</td>
-											<td>{{ metier.color }}</td>
+											<td style="background-color:{{ metier.color }} " >{{ metier.color }}</td>
 											<td><a href="./metierAdd.html?id={{ metier.id }}" class="glyphicon glyphicon-search"></a></td>
 										</tr>
 										
