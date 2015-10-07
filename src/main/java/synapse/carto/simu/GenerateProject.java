@@ -70,7 +70,7 @@ public class GenerateProject {
 			}
 
 			project.metier = GenerateMetier
-					.getMetier(new Random().nextInt() % 3).id;
+					.getMetier(new Random().nextInt() % 4).id;
 
 			project.type = (i == 15 || i == 35) ? TypeProjet.referentiel
 					: TypeProjet.application;
