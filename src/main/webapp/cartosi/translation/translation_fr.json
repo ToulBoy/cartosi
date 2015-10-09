@@ -22,6 +22,7 @@
     "CANCEL" : "Annuler",
     "PROJET_BY_FUNCTIONALS_DOMAINS" : "Nombre de projet par domaines fonctionnels",
     "PROJET_BY_LINKS" : "Nombre d'interconnexions par domaines fonctionnels",
-    "CARTOGRAPHY" : "Cartographie du SI"
+    "CARTOGRAPHY" : "Cartographie du SI",
+    "NOTIFICATIONS" : "Notifications"
    
 }

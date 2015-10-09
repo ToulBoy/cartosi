@@ -3,32 +3,34 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Carto SI 2</title>
+<title>AdminLTE 2 | Compose Message</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 	name="viewport">
 <!-- Bootstrap 3.3.5 -->
-<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
 <!-- Font Awesome -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <!-- Ionicons -->
 <link rel="stylesheet"
 	href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-<!-- jvectormap -->
+<!-- fullCalendar 2.2.5-->
 <link rel="stylesheet"
-	href="plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+	href="./plugins/fullcalendar/fullcalendar.min.css">
+<link rel="stylesheet"
+	href="./plugins/fullcalendar/fullcalendar.print.css" media="print">
 <!-- Theme style -->
-<link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+<link rel="stylesheet" href="./dist/css/AdminLTE.min.css">
 <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-<link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
-
-<link rel="stylesheet" href="./cartosi/css/carto.css">
-<link rel="stylesheet" href="./cartosi/css/vis.min.css">
-<!-- Select2 -->
-<link rel="stylesheet" href="./plugins/select2/select2.min.css">
+<link rel="stylesheet" href="./dist/css/skins/_all-skins.min.css">
+<!-- iCheck -->
+<link rel="stylesheet" href="./plugins/iCheck/flat/blue.css">
+<!-- bootstrap wysihtml5 - text editor -->
+<link rel="stylesheet"
+	href="./plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -38,163 +40,143 @@
     <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini" ng-app="app">
-	<div class="wrapper" ng-controller="myMainCtrl">
+	<div class="wrapper" ng-controller="myMailCtr">
 
-
-		<div ng-include="'header.html'"></div>
+		<div ng-include="'./header.html'"></div>
 		<!-- Left side column. contains the logo and sidebar -->
-		<div ng-include="'main-sidebar.html'"></div>
+
+		<div ng-include="'./main-sidebar.html'"></div>
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<section class="content-header">
 				<h1>
-					Dashboard <small>Version 2.0</small>
+					Mailbox <small>13 new messages</small>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-					<li class="active">Dashboard</li>
+					<li class="active">Mailbox</li>
 				</ol>
 			</section>
 
 			<!-- Main content -->
 			<section class="content">
-				<!-- Info boxes -->
-				<div class="row">
-					<div class="col-md-3 col-sm-3 col-xs-12">
-						<div class="info-box">
-							<span class="info-box-icon bg-aqua"><i
-								class="fa fa-tachometer"></i></span>
-							<div class="info-box-content">
-								<span class="info-box-text">{{translate.COUNT_PROJECTS}}</span> <span
-									class="info-box-number">{{ si.nbProjects }}</span>
-							</div>
-							<!-- /.info-box-content -->
-						</div>
-						<!-- /.info-box -->
-					</div>
-					<!-- /.col -->
-					<div class="col-md-3 col-sm-6 col-xs-12">
-						<div class="info-box">
-							<span class="info-box-icon bg-green"><i
-								class="ion ion-ios-people-outline"></i></span>
-							<div class="info-box-content">
-								<span class="info-box-text">{{translate.TEAM_LEADERS}}</span> <span
-									class="info-box-number">{{ si.nbResponsable }}</span>
-							</div>
-							<!-- /.info-box-content -->
-						</div>
-						<!-- /.info-box -->
-					</div>
-					<!-- /.col -->
-
-					<!-- fix for small devices only -->
-					<div class="clearfix visible-sm-block"></div>
-
-					<div class="col-md-3 col-sm-6 col-xs-12">
-						<div class="info-box">
-							<span class="info-box-icon bg-red"><i
-								class="fa  fa-balance-scale"></i></span>
-							<div class="info-box-content">
-								<span class="info-box-text">{{translate.COUNT_CONNEXION}}</span> <span
-									class="info-box-number">{{ si.nbLinks }}</span>
-							</div>
-							<!-- /.info-box-content -->
-						</div>
-						<!-- /.info-box -->
-					</div>
-					<!-- /.col -->
-					<div class="col-md-3 col-sm-6 col-xs-12">
-						<div class="info-box">
-							<span class="info-box-icon bg-yellow"><i
-								class="fa fa-map-signs"></i></span>
-							<div class="info-box-content">
-								<span class="info-box-text">{{translate.FUNCTIONALS_DOMAINS}}</span> <span
-									class="info-box-number">{{ si.nbMetiers }}</span>
-							</div>
-							<!-- /.info-box-content -->
-						</div>
-						<!-- /.info-box -->
-					</div>
-					<!-- /.col -->
-				</div>
-				<!-- /.row -->
-
-				<div class="row">
-					<div class="col-md-12">
-						<div class="box box box-info">
-							<div class="box-header with-border">
-								<h3 class="box-title">Main Carto</h3>
-								<div class="row">
-									<div class="col-sm-4 col-xs-6">
-										<div class="form-group">
-											<label>{{translate.FUNCTIONAL_DOMAIN}}</label> <select ng-change="updateMap()"
-												ng-model="filter.metier" class="form-control select2"
-												style="width: 100%;">
-												<option selected="selected" value="">------</option>
-												<option ng-repeat="option in metiers"
-													value="{{option.id}}">{{option.id}}</option>
-											</select>
-										</div>
-										<!-- /.form-group -->
-									</div>
-									<!-- /.col -->
-<!-- 									<div class="col-sm-4 col-xs-6"> -->
-<!-- 										<div class="form-group"> -->
-<!-- 											<label>{{translate.TEAM_LEADER}}</label> <select ng-change="updateMap()" -->
-<!-- 												class="form-control " ng-model="filter.responsable" -->
-<!-- 												style="width: 100%;"> -->
-<!-- 												<option selected="selected" value="">------</option> -->
-<!-- 												<option ng-repeat="option in responsables" -->
-<!-- 													value="{{option.id}}">{{option.lastname}}  {{option.firstname}}</option> -->
-
-<!-- 											</select> -->
-<!-- 										</div> -->
-<!-- 										/.form-group -->
-<!-- 									</div> -->
-									<!-- /.col -->
-									<div class="col-sm-4 col-xs-6">
-										<div class="form-group">
-											<label>{{translate.LINK_WITH_THE_PROJECT}}</label> <select
-												ng-change="updateMap()" class="form-control "
-												ng-model="filter.linkto" style="width: 100%;">
-												<option selected="selected" value="">------</option>
-												<option ng-repeat="option in projects" value="{{option.id}}">{{option.id}}</option>
-											</select>
-										</div>
-										<!-- /.form-group -->
-									</div>
-									<!-- /.col -->
-									<!-- 									<div class="col-sm-3 col-xs-6"> -->
-									<!-- 										<div class="form-group"> -->
-									<!-- 											<label>Versions</label> <select ng-change="selectAction()" -->
-									<!-- 												class="form-control " ng-model="filter.version" -->
-									<!-- 												style="width: 100%;"> -->
-									<!-- 												<option ng-repeat="option in projects" -->
-									<!-- 													value="{{option.name}}">{{option.name}}</option> -->
-									<!-- 											</select> -->
-									<!-- 										</div> -->
-									<!-- 										/.form-group -->
-									<!-- 									</div> -->
+				<div class="box box box-info">
+					<div class="box-header with-border">
+						<div class="row">
+							<div class="col-sm-6 col-xs-6">
+								<div class="form-group">
+									<label>{{translate.FUNCTIONAL_DOMAIN}}</label> <select
+										ng-change="updateResponsable()" ng-model="filter.metier"
+										class="form-control select2" style="width: 100%;">
+										<option selected="selected" value="">------</option>
+										<option ng-repeat="option in metiers" value="{{option.id}}">{{option.id}}</option>
+									</select>
 								</div>
-								<!-- /.row -->
+								<!-- /.form-group -->
+							</div>
+							<div class="col-sm-6 col-xs-6">
+								<div class="form-group">
+									<label>{{translate.LINK_WITH_THE_PROJECT}}</label> <select
+										ng-change="updateResponsable()" class="form-control "
+										ng-model="filter.linkto" style="width: 100%;">
+										<option selected="selected" value="">------</option>
+										<option ng-repeat="option in projects" value="{{option.id}}">{{option.id}}</option>
+									</select>
+								</div>
+								<!-- /.form-group -->
+							</div>
+						</div>
+						<!-- /.row -->
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<a href="mails.html"
+							class="btn btn-primary btn-block margin-bottom">Back to Inbox</a>
+						<div class="box box-solid">
+							<div class="box-header with-border">
+								<h3 class="box-title">Folders</h3>
+								<div class="box-tools">
+									<button class="btn btn-box-tool" data-widget="collapse">
+										<i class="fa fa-minus"></i>
+									</button>
+								</div>
+							</div>
+							<div class="box-body no-padding">
+								<table id="example2" class="table table-bordered table-hover">
+									<thead>
+										<tr>
+											<th>{{translate.EMAIL}}</th>
+											<td><label><input type="checkbox"
+													class="minimal" onchange="selectedAll()"></label></td>
+										</tr>
+									</thead>
+									<tbody>
+
+										<tr ng-repeat="responsable in responsablesSelect">
+											<td>{{ responsable }}</td>
+											<td><input type="checkbox" class="minimal"
+												onchange="selected(responsable)"></td>
+										</tr>
+
+									</tbody>
+									<tfoot>
+										<tr>
+											<th>{{translate.EMAIL}}</th>
+											<td><span class="fa fa-fw fa-edit"></span></td>
+										</tr>
+									</tfoot>
+								</table>
+							</div>
+							<!-- /.box-body -->
+						</div>
+						<!-- /. box -->
+					</div>
+					<!-- /.col -->
+					<div class="col-md-9">
+						<div class="box box-primary">
+							<div class="box-header with-border">
+								<h3 class="box-title">Compose New Message</h3>
 							</div>
 							<!-- /.box-header -->
 							<div class="box-body">
-								<div id="mynetwork"></div>
+								<div class="form-group">
+									<input class="form-control" placeholder="To:">
+								</div>
+								<div class="form-group">
+									<input class="form-control" placeholder="Subject:">
+								</div>
+								<div class="form-group">
+									<textarea id="compose-textarea" class="form-control"
+										style="height: 300px">   </textarea>
+								</div>
+								<div class="form-group">
+									<!-- 									<div class="btn btn-default btn-file"> -->
+									<!-- 										<i class="fa fa-paperclip"></i> Attachment <input type="file" -->
+									<!-- 											name="attachment"> -->
+									<!-- 									</div> -->
+									<!-- 									<p class="help-block">Max. 32MB</p> -->
+								</div>
 							</div>
-							<!-- ./box-body -->
-
-
+							<!-- /.box-body -->
 							<div class="box-footer">
+								<div class="pull-right">
+									<button class="btn btn-default">
+										<i class="fa fa-pencil"></i> Draft
+									</button>
+									<button type="submit" class="btn btn-primary">
+										<i class="fa fa-envelope-o"></i> Send
+									</button>
+								</div>
+								<button class="btn btn-default">
+									<i class="fa fa-times"></i> Discard
+								</button>
 							</div>
 							<!-- /.box-footer -->
-							<div id="loadingMap" class="overlay" style="display: none">
-								<i class="fa fa-refresh fa-spin"></i>
-							</div>
 						</div>
-						<!-- /.box -->
+						<!-- /. box -->
 					</div>
 					<!-- /.col -->
 				</div>
@@ -204,13 +186,12 @@
 			<!-- /.content -->
 		</div>
 		<!-- /.content-wrapper -->
-
 		<footer class="main-footer">
 			<div class="pull-right hidden-xs">
 				<b>Version</b> 2.3.0
 			</div>
 			<strong>Copyright &copy; 2014-2015 <a
-				href="http://almsaeedstudio.com">Carto Si by Synapse</a>.
+				href="http://almsaeedstudio.com">Almsaeed Studio</a>.
 			</strong> All rights reserved.
 		</footer>
 
@@ -308,7 +289,10 @@
 
 				</div>
 				<!-- /.tab-pane -->
-
+				<!-- Stats tab content -->
+				<div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab
+					Content</div>
+				<!-- /.tab-pane -->
 				<!-- Settings tab content -->
 				<div class="tab-pane" id="control-sidebar-settings-tab">
 					<form method="post">
@@ -369,46 +353,42 @@
 		<!-- Add the sidebar's background. This div must be placed
            immediately after the control sidebar -->
 		<div class="control-sidebar-bg"></div>
-
 	</div>
 	<!-- ./wrapper -->
 
 	<!-- jQuery 2.1.4 -->
-	<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+	<script src="./plugins/jQuery/jQuery-2.1.4.min.js"></script>
 	<!-- Bootstrap 3.3.5 -->
-	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script src="./bootstrap/js/bootstrap.min.js"></script>
+	<!-- Slimscroll -->
+	<script src="./plugins/slimScroll/jquery.slimscroll.min.js"></script>
 	<!-- FastClick -->
-	<script src="plugins/fastclick/fastclick.min.js"></script>
+	<script src="./plugins/fastclick/fastclick.min.js"></script>
 	<!-- AdminLTE App -->
-	<script src="dist/js/app.min.js"></script>
-	<!-- Sparkline -->
-	<script src="plugins/sparkline/jquery.sparkline.min.js"></script>
-	<!-- jvectormap -->
-	<script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-	<script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-	<!-- SlimScroll 1.3.0 -->
-	<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
-	<!-- ChartJS 1.0.1 -->
-	<script src="plugins/chartjs/Chart.min.js"></script>
-	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-	<!-- 	<script src="dist/js/pages/dashboard2.js"></script> -->
+	<script src="./dist/js/app.min.js"></script>
 	<!-- AdminLTE for demo purposes -->
-	<script src="dist/js/demo.js"></script>
-	<!-- Select2 -->
-	<!-- 	<script src="./plugins/select2/select2.full.min.js"></script> -->
+	<script src="./dist/js/demo.js"></script>
+	<!-- iCheck -->
+	<script src="./plugins/iCheck/icheck.min.js"></script>
+	<!-- Bootstrap WYSIHTML5 -->
+	<script
+		src="./plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 
 
 
-	<!-- AdminLTE Skins. Choose a skin from the css/skins -->
 	<script src="./cartosi/lib/angular.min.js"></script>
 	<script src="./cartosi/lib/angular-resource.min.js"></script>
+	<script src="./cartosi/lib/angular-sanitize.js"></script>
 	<script src="./cartosi/lib/angular-cookies.min.js"></script>
-	<script src="./cartosi/lib/i18n/angular-locale_en.js"></script>
-<!-- 	http://blog.novanet.no/creating-multilingual-support-using-angularjs/ -->
-	<script src="./cartosi/lib/ui-bootstrap-tpls-0.13.4.min.js"></script>
-	<script src="./cartosi/lib/vis.min.js"></script>
-	<script src="./cartosi/js/MyCartography.js"></script>
 
-
+	<script src="./cartosi/js/MyServices.js"></script>
+	<script src="./cartosi/js/MyMail.js"></script>
+	<!-- Page Script -->
+	<script>
+		$(function() {
+			//Add text editor
+			$("#compose-textarea").wysihtml5();
+		});
+	</script>
 </body>
 </html>
