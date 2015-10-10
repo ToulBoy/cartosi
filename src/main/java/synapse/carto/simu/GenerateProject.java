@@ -43,7 +43,7 @@ public class GenerateProject {
 	public static void main(String[] args) {
 		ProjetRepo repo = new ProjetRepo();
 
-		int max = 50;
+		int max = 300;
 		for (int i = 0; i < max; i++) {
 
 			Project project = new Project();
