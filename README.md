@@ -34,8 +34,8 @@ Cartos is composed by a RESTFull service and a HTML/JS/CSS interface build with 
 * [AngularJS] - HTML enhanced for web apps!
 * [Twitter Bootstrap] - great UI boilerplate for modern web apps
 * [jQuery] - jQuery is a fast, small, and feature-rich JavaScript library
-
-
+* [AdminLTE Control Panel Template] - Best open source admin dashboard & control panel theme by I'm working on
+. 
 
 [download ZIP]: <https://github.com/TheMalloum/cartosi/archive/master.zip>
 [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
@@ -43,5 +43,7 @@ Cartos is composed by a RESTFull service and a HTML/JS/CSS interface build with 
 [AngularJS]: <http://angularjs.org>
 [RESTEasy]: http://resteasy.jboss.org/
 [http://localhost:8080/]: http://localhost:8080/
+[AdminLTE Control Panel Template]:  https://almsaeedstudio.com/
+[Abdullah Almsaeed]: https://almsaeedstudio.com/about
 
    
