@@ -5,6 +5,15 @@
 	version="2.5">
 	<display-name>cartosi</display-name>
 	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	
+	<servlet>
+		<servlet-name>MaServlet</servlet-name>
+		<servlet-class> synapse.carto.servlet.Init</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
 	<!-- Auto scan REST service -->
 	<context-param>
 		<param-name>resteasy.scan</param-name>
