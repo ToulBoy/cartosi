@@ -32,9 +32,9 @@ Cartos is composed by a RESTFull service and a HTML/JS/CSS interface build with 
 
 * [RESTEasy] - RESTEasy is a JBoss project that provides various frameworks to help you build RESTful Web Services and RESTful Java applications.
 * [AngularJS] - HTML enhanced for web apps!
-* [Twitter Bootstrap] - great UI boilerplate for modern web apps
-* [jQuery] - jQuery is a fast, small, and feature-rich JavaScript library
-* [AdminLTE Control Panel Template] - Best open source admin dashboard & control panel theme by I'm working on
+* [Twitter Bootstrap] - great UI boilerplate for modern web apps.
+* [jQuery] - jQuery is a fast, small, and feature-rich JavaScript library.
+* [AdminLTE Control Panel Template] - Best open source admin dashboard & control panel theme by [Abdullah Almsaeed].
 . 
 
 [download ZIP]: <https://github.com/TheMalloum/cartosi/archive/master.zip>
