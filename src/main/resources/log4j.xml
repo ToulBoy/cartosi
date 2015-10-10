@@ -48,35 +48,17 @@
    <!-- Limit categories -->
    <!-- ================ -->
 
-   <category name="synapse">
-     <priority value="INFO" />
+   <category name="synapse.carto">
+     <priority value="DEBUG" />
    </category>
-   
-   
-   
-<!--    <category name="org.elasticsearch"> -->
-<!--      <priority value="INFO" /> -->
-<!--    </category> -->
-   
-<!--    <category name="org.springframework"> -->
-<!--      <priority value="INFO" /> -->
-<!--    </category> -->
-   
-<!--    <category name="org.jboss.resteasy"> -->
-<!--      <priority value="INFO" /> -->
-<!--    </category> -->
 
-<!--    <category name="fr.pilato"> -->
-<!--      <priority value="INFO" /> -->
-<!--    </category> -->
-   
-   
-
-   <!-- Limit the org.apache category to INFO as its DEBUG is verbose -->
    <category name="org.apache">
       <priority value="INFO"/>
    </category>
    
+   <category name="org.quartz">
+      <priority value="DEBUG"/>
+   </category>
    
    
    <!-- ======================= -->

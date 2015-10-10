@@ -1,8 +1,11 @@
-package synapse.carto.data;
+package synapse.carto.api.data;
 
 import java.util.HashMap;
 import java.util.List;
 
+import synapse.carto.data.Metier;
+import synapse.carto.data.Project;
+import synapse.carto.data.Responsable;
 import synapse.carto.repo.MetierRepo;
 import synapse.carto.repo.ResponsableRepo;
 

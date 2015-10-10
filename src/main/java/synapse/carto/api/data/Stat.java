@@ -1,4 +1,4 @@
-package synapse.carto.data;
+package synapse.carto.api.data;
 
 public class Stat {
 

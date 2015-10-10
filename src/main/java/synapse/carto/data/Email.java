@@ -14,6 +14,8 @@ public class Email {
 
 	public List<String> adresse;
 	
+	public String id;
+	
 	public Date date = new Date();
 
 	public Email() {

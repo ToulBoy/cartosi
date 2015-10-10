@@ -1,6 +1,6 @@
 package synapse.carto.repo;
 
-import synapse.carto.data.Si;
+import synapse.carto.api.data.Si;
 
 public class SIRepo extends AbstractSiRepo<Si> {
 

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import synapse.carto.cron.EmailSenderCron;
 import synapse.carto.simu.GenerateMetier;
 import synapse.carto.simu.GenerateProject;
 import synapse.carto.simu.GenerateResponsable;
@@ -23,6 +24,8 @@ public class Init extends HttpServlet {
 			GenerateProject.main(null);
 			GenerateMetier.main(null);
 			GenerateResponsable.main(null);
+			EmailSenderCron.init();
+			
 		} catch (Exception e) {
 			log.error("Probleme lors de l'initialisation de la servlet " + e);
 		}

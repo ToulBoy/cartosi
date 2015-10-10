@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
@@ -13,10 +12,11 @@ import javax.ws.rs.core.Response;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import synapse.carto.api.data.ProjectResponse;
+import synapse.carto.api.data.Si;
 import synapse.carto.data.Filter;
 import synapse.carto.data.Metier;
 import synapse.carto.data.Project;
-import synapse.carto.data.Si;
 import synapse.carto.repo.ProjetRepo;
 
 @Path("/si")

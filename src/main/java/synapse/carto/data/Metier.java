@@ -2,8 +2,6 @@ package synapse.carto.data;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.apache.log4j.Logger;
-
 @XmlRootElement
 public class Metier {
 
@@ -20,13 +18,6 @@ public class Metier {
 		this.id = name;
 		this.color = color;
 	}
-
-	private String getid() {
-		return id;
-
-	}
-
-
 
 
 
