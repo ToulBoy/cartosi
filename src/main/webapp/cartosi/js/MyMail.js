@@ -83,6 +83,10 @@ app.controller('myMailCtr', [ '$scope', '$resource', 'myTranslators',
 				
 				emailQuery.put($scope.email);
 				
+				
+				$("#compose-textarea").val("");
+				$scope.email={};
+				$scope.email.adresse =$scope.responsablesSelect;
 				window.location = "./index.html";
 			};
 			  
