@@ -1,14 +1,24 @@
-var app = angular.module('app', [ "ngResource", 'ngCookies' ]);
+var app = angular.module('app', [ "ngResource", 'ngCookies',"checklist-model"]);
 
 app.controller('myMailCtr', [ '$scope', '$resource', 'myTranslators',
 		function($scope, $resource, myTranslators) {
 
 			$scope.project = {};
 			$scope.responsablesSelect =[];
-
+			$scope.email={};
+			$scope.email.adresse =[];
 			myTranslators.getTranslation($scope);
 
 			var projectQuery = $resource('./api/project/:id', {
+				id : '@id'
+			}, {
+				put : {
+					method : 'PUT'
+				}
+			});
+
+			
+			var emailQuery = $resource('./api/email/:id', {
 				id : '@id'
 			}, {
 				put : {
@@ -32,12 +42,15 @@ app.controller('myMailCtr', [ '$scope', '$resource', 'myTranslators',
 				
 				angular.forEach(data, function(responsable, key) {
 					$scope.responsablesSelect.push(responsable.id);
+					$scope.email.adresse.push(responsable.id);
 
 				});
-				
 			});
 
 			$scope.metiers = metierQuery.query(function() {
+			});
+			
+			$scope.emails = emailQuery.query(function() {
 			});
 
 			var id = location.search.split('id=')[1];
@@ -48,6 +61,32 @@ app.controller('myMailCtr', [ '$scope', '$resource', 'myTranslators',
 				});
 			}
 
+			
+		
+			
+//			$scope.selectedAll= function(t) {
+//			    alert(t)
+//			  };
+//			
+//			$scope.checkAll = function() {
+//			    $scope.myEmails = angular.copy($scope.responsablesSelect);
+//			  };
+//		
+//			$scope.uncheckAll = function() {
+//		    $scope.myEmails= [];
+//		  };
+			
+
+			$scope.send = function() {
+			    
+				$scope.email.texte = $("#compose-textarea").val();
+				
+				emailQuery.put($scope.email);
+				
+				window.location = "./index.html";
+			};
+			  
+				
 			$scope.updateResponsable = function() {
 				$scope.responsablesSelect = [];
 				var flagselect = [];
@@ -79,6 +118,7 @@ app.controller('myMailCtr', [ '$scope', '$resource', 'myTranslators',
 
 				}
 
+				$scope.email.adresse = $scope.responsablesSelect;
 			}
 
 		} ]);
