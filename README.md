@@ -16,8 +16,10 @@ compile the project with maven
   
 
 And run the application 
-  	cd target/
+
+    cd target/
     java -jar carto-0.0.1-SNAPSHOT-war-exec.jar
+
 
 Have fun ! you can now appreciate CartoSI at this URL [http://localhost:8080/]
  
@@ -26,7 +28,7 @@ Have fun ! you can now appreciate CartoSI at this URL [http://localhost:8080/]
  
 ## Tech
 
-Cartos is the J2EE application compose by a RESTFull service and a HTML/JS/CSS interface build with angularjS:
+Cartos is composed by a RESTFull service and a HTML/JS/CSS interface build with angularjS:
 
 * [RESTEasy] - RESTEasy is a JBoss project that provides various frameworks to help you build RESTful Web Services and RESTful Java applications.
 * [AngularJS] - HTML enhanced for web apps!
