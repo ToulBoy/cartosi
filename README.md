@@ -1,4 +1,8 @@
 
+![](https://github.com/TheMalloum/cartosi/blob/master/src/main/webapp/cartosi/img/bibliotheque.png "Cartography" )
+
+
+
 # CartoSI
 CartoSI is a tool for the cartography of a complex information system 
 
