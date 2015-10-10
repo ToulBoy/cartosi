@@ -9,50 +9,31 @@
 	<properties>
 		<resteasy.version>3.0.5.Final</resteasy.version>
 	</properties>
-
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.3</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.2</version>
+				<version>2.1</version>
 				<executions>
 					<execution>
-						<id>tomcat-war-exec</id>
+						<id>tomcat-run</id>
 						<goals>
 							<goal>exec-war-only</goal>
 						</goals>
 						<phase>package</phase>
 						<configuration>
-							<!-- <warRunDependencies> -->
-							<!-- <warRunDependency> -->
-							<!-- <dependency> -->
-							<!-- <groupId>synapse</groupId> -->
-							<!-- <artifactId>carto</artifactId> -->
-							<!-- <version>${project.version}</version> -->
-							<!-- <type>war</type> -->
-							<!-- </dependency> -->
-							<!-- </warRunDependency> -->
-							<!-- </warRunDependencies> -->
-							<path>/${project.build.finalName}</path>
+							<path>/</path>
+							<attachartifactclassifier>exec-war</attachartifactclassifier>
+							<attachartifactclassifiertype>jar</attachartifactclassifiertype>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
+
 		</plugins>
+
 	</build>
-
-
-
 
 
 	<dependencies>
@@ -78,8 +59,8 @@
 			<scope>provided</scope>
 			<version>3.0.1</version>
 		</dependency>
-		
-			<!-- CORS -->
+
+		<!-- CORS -->
 		<dependency>
 			<groupId>com.thetransactioncompany</groupId>
 			<artifactId>cors-filter</artifactId>
