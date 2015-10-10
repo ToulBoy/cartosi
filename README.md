@@ -4,7 +4,7 @@ CartoSI is a tool for the cartography of a complex information system
 
 #Prerequisites
 
-	- JAVA 5 
+	- JAVA 6 or higher
 	- maven 3
 
 
@@ -13,10 +13,10 @@ Test CartoSI is simple, clone the project or [download ZIP]
 compile the project with maven
 
     mvn clean install
-    cd target/
+  
 
-and run the application 
-
+And run the application 
+  	cd target/
     java -jar carto-0.0.1-SNAPSHOT-war-exec.jar
 
 Have fun ! you can now appreciate CartoSI at this URL [http://localhost:8080/]

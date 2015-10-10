@@ -49,11 +49,11 @@
 				<h1>
 					{{translate.TEAM_LEADER}} <small>Preview</small>
 				</h1>
-<!-- 				<ol class="breadcrumb"> -->
-<!-- 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li> -->
-<!-- 					<li><a href="#">Forms</a></li> -->
-<!-- 					<li class="active">General Elements</li> -->
-<!-- 				</ol> -->
+				<!-- 				<ol class="breadcrumb"> -->
+				<!-- 					<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li> -->
+				<!-- 					<li><a href="#">Forms</a></li> -->
+				<!-- 					<li class="active">General Elements</li> -->
+				<!-- 				</ol> -->
 			</section>
 
 			<!-- Main content -->
@@ -95,7 +95,8 @@
 									<!-- /.box-body -->
 
 									<div class="box-footer clearfix">
-										<a href="./index.html" class="btn btn-lg btn-default btn-flat pull-right">{{translate.CANCEL}}</a>
+										<a href="./index.html"
+											class="btn btn-lg btn-default btn-flat pull-right">{{translate.CANCEL}}</a>
 
 										<a href="#" class="btn btn-lg btn-primary btn-flat pull-left"
 											ng-click="update()">{{translate.VALIDATE}}</a>
@@ -111,17 +112,8 @@
 			<!-- /.content -->
 		</div>
 		<!-- /.content-wrapper -->
-		<footer class="main-footer">
-			<div class="pull-right hidden-xs">
-				<b>Version</b> 2.3.0
-			</div>
-			<strong>Copyright &copy; 2014-2015 <a
-				href="http://almsaeedstudio.com">Almsaeed Studio</a>.
-			</strong> All rights reserved.
-		</footer>
-		<!-- Add the sidebar's background. This div must be placed
-           immediately after the control sidebar -->
-		<div class="control-sidebar-bg"></div>
+		<div ng-include="'./footer.html'"></div>
+
 	</div>
 	<!-- ./wrapper -->
 
