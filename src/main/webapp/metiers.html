@@ -86,8 +86,8 @@
 									</tbody>
 									<tfoot>
 										<tr>
-											<th>Name</th>
-											<th>Color</th>
+											<th>{{translate.NAME}}</th>
+											<th>{{translate.COLOR}}</th>
 											<td> <span  class="fa fa-fw fa-edit"></span> </td>
 										</tr>
 									</tfoot>
@@ -109,14 +109,7 @@
 			<!-- /.content -->
 		</div>
 		<!-- /.content-wrapper -->
-		<footer class="main-footer">
-			<div class="pull-right hidden-xs">
-				<b>Version</b> 2.3.0
-			</div>
-			<strong>Copyright &copy; 2014-2015 <a
-				href="http://almsaeedstudio.com">Almsaeed Studio</a>.
-			</strong> All rights reserved.
-		</footer>
+		<div ng-include="'./footer.html'"></div>
 		<!-- Add the sidebar's background. This div must be placed
            immediately after the control sidebar -->
 		<div class="control-sidebar-bg"></div>

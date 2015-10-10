@@ -23,6 +23,9 @@
     "PROJET_BY_FUNCTIONALS_DOMAINS" : "Nombre de projet par domaines fonctionnels",
     "PROJET_BY_LINKS" : "Nombre d'interconnexions par domaines fonctionnels",
     "CARTOGRAPHY" : "Cartographie du SI",
-    "NOTIFICATIONS" : "Notifications"
+    "NOTIFICATIONS" : "Notifications",
+    "MAIN_NAVIGATION" :"MENU",
+    "LISTE" : "Liste",
+    "ADD" : "Ajouter"
    
 }

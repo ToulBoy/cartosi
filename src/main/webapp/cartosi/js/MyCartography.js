@@ -367,7 +367,7 @@ function updateDashbord(scope, resource, filter) {
 							interaction : {
 								navigationButtons : true,
 								keyboard : true,
-								zoomView : false
+								zoomView : true
 							}
 						}
 
