@@ -5,8 +5,8 @@ CartoSI is a tool for the cartography of a complex information system
 
 #Prerequisites
 
-	- JAVA 6 or higher
-	- maven 3
+	JAVA 6 or higher
+	maven 3
 
 
 ## DEMO
@@ -24,7 +24,9 @@ And run the application
 
 Have fun ! you can now appreciate CartoSI at this URL [http://localhost:8080/]
  
- 
+## API documentation
+
+All api documentation is include in cartosi at this URL [http://localhost:8080/apidocs/]
  
  
 ## Tech
@@ -36,6 +38,7 @@ Cartos is composed by a RESTFull service and a HTML/JS/CSS interface build with 
 * [Twitter Bootstrap] - great UI boilerplate for modern web apps.
 * [jQuery] - jQuery is a fast, small, and feature-rich JavaScript library.
 * [AdminLTE Control Panel Template] - Best open source admin dashboard & control panel theme by [Abdullah Almsaeed].
+* [ENUNCIATE] - ENUNCIATE IS AN ENHANCEMENT ENGINE FOR YOUR JAVA WEB SERVICE API.
 . 
 
 [download ZIP]: <https://github.com/TheMalloum/cartosi/archive/master.zip>
@@ -44,7 +47,9 @@ Cartos is composed by a RESTFull service and a HTML/JS/CSS interface build with 
 [AngularJS]: <http://angularjs.org>
 [RESTEasy]: http://resteasy.jboss.org/
 [http://localhost:8080/]: http://localhost:8080/
+[http://localhost:8080/apidocs/]: http://localhost:8080/apidocs/
 [AdminLTE Control Panel Template]:  https://almsaeedstudio.com/
 [Abdullah Almsaeed]: https://almsaeedstudio.com/about
+[ENUNCIATE]: http://enunciate.webcohesion.com/
 
    
