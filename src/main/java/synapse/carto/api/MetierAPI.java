@@ -1,5 +1,6 @@
 package synapse.carto.api;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
@@ -15,6 +16,7 @@ import org.apache.commons.logging.LogFactory;
 import synapse.carto.data.Metier;
 import synapse.carto.repo.MetierRepo;
 
+@RolesAllowed("admin")
 @Path("/metier")
 public class MetierAPI {
 
@@ -23,6 +25,7 @@ public class MetierAPI {
 	
 	MetierRepo repo = new MetierRepo();
 	
+	@RolesAllowed({"reader","manager"})
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
@@ -79,7 +82,7 @@ public class MetierAPI {
 	}
 
 	
-	
+	@RolesAllowed({"reader","manager"})
 	@GET
 	@Path("/")
 	@Produces("application/json")

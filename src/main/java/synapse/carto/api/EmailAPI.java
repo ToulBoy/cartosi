@@ -2,6 +2,7 @@ package synapse.carto.api;
 
 import java.util.UUID;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
@@ -17,6 +18,7 @@ import org.apache.commons.logging.LogFactory;
 import synapse.carto.data.Email;
 import synapse.carto.repo.EmailRepo;
 
+@RolesAllowed("admin")
 @Path("/email")
 public class EmailAPI {
 
@@ -25,6 +27,7 @@ public class EmailAPI {
 	
 	EmailRepo repo = new EmailRepo();
 	
+	@RolesAllowed({"reader","manager"})
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
@@ -85,7 +88,7 @@ public class EmailAPI {
 	}
 
 	
-	
+	@RolesAllowed({"reader","manager"})
 	@GET
 	@Path("/")
 	@Produces("application/json")

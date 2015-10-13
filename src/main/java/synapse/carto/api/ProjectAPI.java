@@ -1,5 +1,7 @@
 package synapse.carto.api;
 
+import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
@@ -15,6 +17,7 @@ import org.apache.commons.logging.LogFactory;
 import synapse.carto.data.Project;
 import synapse.carto.repo.ProjetRepo;
 
+@RolesAllowed("admin")
 @Path("/project")
 public class ProjectAPI {
 
@@ -22,6 +25,7 @@ public class ProjectAPI {
 
 	ProjetRepo repo = new ProjetRepo();
 
+	@RolesAllowed({"reader","manager"})
 	@GET
 	@Path("/{id}")
 	@Produces("application/json")
@@ -41,6 +45,7 @@ public class ProjectAPI {
 
 	}
 
+	@RolesAllowed({"manager"})
 	@DELETE
 	@Path("/{id}")
 	@Produces("application/json")
@@ -62,6 +67,7 @@ public class ProjectAPI {
 
 	}
 
+	@RolesAllowed({"manager"})
 	@PUT
 	@Path("/{id}")
 	@Produces("application/json")
@@ -79,9 +85,11 @@ public class ProjectAPI {
 
 	}
 
+	@RolesAllowed({"reader","manager"})
 	@GET
 	@Path("/")
 	@Produces("application/json")
+	@PermitAll
 	public Response get() {
 
 		return Response.ok(repo.getAll(Project.class)).build();

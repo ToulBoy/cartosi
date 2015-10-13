@@ -101,7 +101,7 @@ public class EmailSenderCron implements Job {
 
 			// schedule the job
 			StdSchedulerFactory.getDefaultScheduler().scheduleJob(job, trigger);
-			StdSchedulerFactory.getDefaultScheduler().start();
+			
 
 		} catch (Exception e) {
 			logger.fatal("Problème de l'instanciation du job "

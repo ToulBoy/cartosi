@@ -3,6 +3,7 @@ package synapse.carto.api;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -19,6 +20,7 @@ import synapse.carto.data.Metier;
 import synapse.carto.data.Project;
 import synapse.carto.repo.ProjetRepo;
 
+@RolesAllowed("admin")
 @Path("/si")
 public class SiAPI {
 
@@ -26,6 +28,7 @@ public class SiAPI {
 
 	ProjetRepo repo = new ProjetRepo();
 
+	@RolesAllowed("reader")
 	@GET
 	@Path("/")
 	@Produces("application/json")
@@ -37,6 +40,7 @@ public class SiAPI {
 
 	}
 
+	@RolesAllowed("reader")
 	@GET
 	@Path("/search")
 	@Produces("application/json")

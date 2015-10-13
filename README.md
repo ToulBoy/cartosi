@@ -26,7 +26,7 @@ Have fun ! you can now appreciate CartoSI at this URL [http://localhost:8080/]
  
 ## API documentation
 
-All api documentation is include in cartosi at this URL [http://localhost:8080/apidocs/]
+All api documentation is included in cartosi at this URL [http://localhost:8080/apidocs/]
  
  
 ## Tech
