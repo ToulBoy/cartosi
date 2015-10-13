@@ -28,6 +28,18 @@ Have fun ! you can now appreciate CartoSI at this URL [http://localhost:8080/]
 
 All api documentation is included in cartosi at this URL [http://localhost:8080/apidocs/]
  
+
+
+# Security
+
+Authentication and Identity Service : Java Authentication and Authorization Service, or JAAS is the Java implementation of the standard Pluggable Authentication Module (PAM) information security framework.
+
+Authentication and user management is very pluggable so that the CartoSI can:
+Integrate with a Single Sign On system,
+Integrate with an external source of users and groups,
+Integrate easily any specific business logic tied to user management.
+For that the Authentication and Identity services are separated in several components that can all be configured.
+
  
 ## Tech
 
