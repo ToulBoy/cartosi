@@ -50,8 +50,8 @@ Cartos is composed by a RESTFull service and a HTML/JS/CSS interface build with 
 * [Twitter Bootstrap] - great UI boilerplate for modern web apps.
 * [jQuery] - jQuery is a fast, small, and feature-rich JavaScript library.
 * [AdminLTE Control Panel Template] - Best open source admin dashboard & control panel theme by [Abdullah Almsaeed].
-* [ENUNCIATE] - ENUNCIATE IS AN ENHANCEMENT ENGINE FOR YOUR JAVA WEB SERVICE API.
-. 
+* [ENUNCIATE] - Enumciate is an enhancement engine for your JAVA web service API.
+ 
 
 [download ZIP]: <https://github.com/TheMalloum/cartosi/archive/master.zip>
 [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
