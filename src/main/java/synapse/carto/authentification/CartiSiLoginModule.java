@@ -20,7 +20,7 @@ import org.apache.commons.logging.LogFactory;
 
 public class CartiSiLoginModule implements LoginModule {
 
-	Subject subject;
+	private Subject subject;
 
 	private CallbackHandler handler;
 	private String login;
