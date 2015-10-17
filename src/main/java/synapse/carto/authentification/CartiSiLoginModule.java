@@ -1,6 +1,9 @@
 package synapse.carto.authentification;
 
 import java.io.IOException;
+import java.nio.file.attribute.UserPrincipal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.security.auth.Subject;
@@ -21,6 +24,10 @@ public class CartiSiLoginModule implements LoginModule {
 
 	private CallbackHandler handler;
 	private String login;
+
+	private List<String> userGroups;
+	private CartoSiUser userPrincipal;
+	private CartoSiGroupe rolePrincipal;
 
 	protected final static Log logger = LogFactory
 			.getLog(CartiSiLoginModule.class);
@@ -51,7 +58,9 @@ public class CartiSiLoginModule implements LoginModule {
 			// a Web Service, etc.
 			// For this tutorial we are just checking if
 			// user is "user123" and password is "pass123"
-			if (name != null && (name.equals("admin") || name.equals("reader") || name.equals("manager"))) {
+			if (name != null && password.equalsIgnoreCase("name")
+					&& (name.equals("admin") || name.equals("reader") || name
+							.equals("manager"))) {
 
 				// We store the username and roles
 				// fetched from the credentials provider
@@ -59,7 +68,8 @@ public class CartiSiLoginModule implements LoginModule {
 				// For this tutorial we hard coded the
 				// "admin" role
 				this.login = name;
-				
+				userGroups = new ArrayList<String>();
+				userGroups.add("admin");
 				return true;
 			}
 
@@ -76,8 +86,15 @@ public class CartiSiLoginModule implements LoginModule {
 
 	@Override
 	public boolean commit() throws LoginException {
-		CartoSiGroupe userPrincipal = new CartoSiGroupe(login);
+		userPrincipal = new CartoSiUser(login);
 		subject.getPrincipals().add(userPrincipal);
+
+		if (userGroups != null && userGroups.size() > 0) {
+			for (String groupName : userGroups) {
+				rolePrincipal = new CartoSiGroupe(groupName);
+				subject.getPrincipals().add(rolePrincipal);
+			}
+		}
 
 		return true;
 	}
