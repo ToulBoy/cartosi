@@ -26,7 +26,7 @@ Have fun ! you can now appreciate CartoSI at this URL [http://localhost:8080/]
  
 ## API documentation
 
-All api documentation is included in cartosi at this URL [http://localhost:8080/apidocs/]
+All api documentation is included in CartoSI at this URL [http://localhost:8080/apidocs/]
  
 
 
@@ -43,7 +43,7 @@ For that the Authentication and Identity services are separated in several compo
  
 ## Tech
 
-Cartos is composed by a RESTFull service and a HTML/JS/CSS interface build with angularjS:
+CartoSI is composed by a RESTFull service and a HTML/JS/CSS interface build with angularjS:
 
 * [RESTEasy] - RESTEasy is a JBoss project that provides various frameworks to help you build RESTful Web Services and RESTful Java applications.
 * [AngularJS] - HTML enhanced for web apps!
